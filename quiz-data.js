@@ -1,5 +1,5 @@
 // ==========================================================================
-// 150 COMPREHENSIVE CRYPTOGRAPHY QUIZ QUESTIONS (30 QUESTIONS PER ALGORITHM)
+// 180 COMPREHENSIVE CRYPTOGRAPHY QUIZ QUESTIONS (30 QUESTIONS PER ALGORITHM: DES, AES, RSA, MD5, SHA-256, ELGAMAL)
 // ==========================================================================
 const QUIZ_QUESTIONS = [
   {
@@ -2251,6 +2251,456 @@ const QUIZ_QUESTIONS = [
     ],
     "ans": 1,
     "exp": "SHA-256 là tiêu chuẩn hàm băm mật mã thành công và được tin cậy nhất trong lịch sử máy tính. Nó bảo vệ hàng nghìn tỷ đô la giao dịch tài chính, lưu lượng web toàn cầu và là thước đo chuẩn mực cho an toàn thông tin hiện đại."
+  },
+  {
+    "id": 151,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Hệ mật mã khóa công khai ElGamal được nhà khoa học nào đề xuất và vào năm nào?",
+    "options": [
+      "A. Ron Rivest, Adi Shamir và Leonard Adleman năm 1977",
+      "B. Taher Elgamal năm 1985",
+      "C. Whitfield Diffie và Martin Hellman năm 1976",
+      "D. Ralph Merkle năm 1979"
+    ],
+    "ans": 1,
+    "exp": "Hệ mật mã ElGamal do nhà mật mã học người Ai Cập Taher Elgamal công bố năm 1985 trong bài báo kinh điển 'A Public Key Cryptosystem and a Signature Scheme Based on Discrete Logarithms'."
+  },
+  {
+    "id": 152,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Độ an toàn của hệ mật mã ElGamal dựa trên bài toán toán học nan giải nào?",
+    "options": [
+      "A. Bài toán phân tích thừa số nguyên tố lớn (Integer Factorization)",
+      "B. Bài toán Logarithm rời rạc (Discrete Logarithm Problem - DLP) trên nhóm cyclic hữu hạn",
+      "C. Bài toán véc-tơ ngắn nhất trong lưới (SVP trong Lattice)",
+      "D. Bài toán nghịch đảo hàm băm một chiều"
+    ],
+    "ans": 1,
+    "exp": "ElGamal dựa trên độ khó của Bài toán Logarithm Rời rạc (DLP): Cho trước số nguyên tố p, phần tử sinh g và giá trị y = g^x mod p, việc tìm lại số mũ bí mật x là cực kỳ khó khăn về mặt tính toán với số nguyên tố lớn."
+  },
+  {
+    "id": 153,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Trong hệ mật mã ElGamal, bộ tham số nào sau đây tạo thành Khóa công khai (Public Key)?",
+    "options": [
+      "A. Cặp số (e, n)",
+      "B. Bộ ba số (p, g, y) trong đó p là số nguyên tố, g là căn nguyên thủy, y = g^x mod p",
+      "C. Cặp số (p, x) trong đó x là số mũ bí mật",
+      "D. Bộ ba số (p, g, x)"
+    ],
+    "ans": 1,
+    "exp": "Khóa công khai của ElGamal gồm bộ ba (p, g, y), trong đó p là số nguyên tố, g là phần tử nguyên căn (generator) của Z_p*, và y = g^x mod p. Khóa bí mật (Private Key) chỉ là số nguyên x."
+  },
+  {
+    "id": 154,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Phần tử g trong ElGamal được yêu cầu phải là gì của trường số nguyên modulo p?",
+    "options": [
+      "A. Số chẵn bất kỳ",
+      "B. Căn nguyên thủy (Primitive Root hay Generator) của nhóm Z_p*",
+      "C. Số nguyên tố cùng nhau với số mũ bí mật x",
+      "D. Một số ngẫu nhiên nhỏ hơn 10"
+    ],
+    "ans": 1,
+    "exp": "g phải là căn nguyên thủy (generator) của nhóm cyclic Z_p*, nghĩa là tập hợp các lũy thừa {g^1, g^2, ..., g^(p-1) mod p} sẽ sinh ra đầy đủ tất cả p - 1 phần tử khác 0 từ 1 đến p - 1."
+  },
+  {
+    "id": 155,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Khóa bí mật (Private Key) x trong ElGamal được người nhận chọn như thế nào?",
+    "options": [
+      "A. Là một số chẵn chia hết cho p",
+      "B. Là một số nguyên ngẫu nhiên thỏa mãn 1 < x < p - 1 và được giữ bí mật tuyệt đối",
+      "C. Bắt buộc phải là một số nguyên tố",
+      "D. Được tính từ hàm Euler phi(p)"
+    ],
+    "ans": 1,
+    "exp": "Khóa bí mật x là một số nguyên được chọn ngẫu nhiên trong khoảng 1 < x < p - 1. Người sở hữu khóa phải giữ bí mật tuyệt đối số x này."
+  },
+  {
+    "id": 156,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Khi mã hóa một thông điệp M bằng ElGamal, người gửi cần chọn thêm giá trị bí mật phiên k (Ephemeral Key) thỏa mãn điều kiện gì?",
+    "options": [
+      "A. k phải bằng khóa bí mật x của người nhận",
+      "B. k là số nguyên ngẫu nhiên thỏa mãn 1 < k < p - 1 và gcd(k, p - 1) = 1",
+      "C. k là một hằng số cố định bằng 3",
+      "D. k phải chia hết cho p"
+    ],
+    "ans": 1,
+    "exp": "Người gửi phải sinh một số ngẫu nhiên k độc lập cho mỗi thông điệp (gọi là Ephemeral Key hay Nonce) sao cho 1 < k < p - 1 và nguyên tố cùng nhau với p - 1 (gcd(k, p-1) = 1)."
+  },
+  {
+    "id": 157,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Bản mã ElGamal của một thông điệp M bao gồm những thành phần nào?",
+    "options": [
+      "A. Một số nguyên C duy nhất giống như RSA",
+      "B. Cặp hai số nguyên (c1, c2) trong đó c1 = g^k mod p và c2 = (M * y^k) mod p",
+      "C. Bộ ba số (c1, c2, c3)",
+      "D. Một mảng 16 byte sau phép thế ma trận"
+    ],
+    "ans": 1,
+    "exp": "Bản mã ElGamal gồm cặp 2 thành phần (c1, c2): c1 = g^k mod p (mang thông tin chia sẻ khóa) và c2 = M * (y^k) mod p (bản rõ M được nhân với khóa tạm thời s = y^k mod p)."
+  },
+  {
+    "id": 158,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Đặc tính 'Mã hóa ngẫu nhiên' (Probabilistic Encryption) của ElGamal có ý nghĩa gì?",
+    "options": [
+      "A. Thuật toán đôi khi giải mã ra kết quả sai",
+      "B. Cùng một bản rõ M, khi mã hóa nhiều lần với các số k ngẫu nhiên khác nhau sẽ sinh ra các bản mã (c1, c2) hoàn toàn khác nhau",
+      "C. Bản rõ M phải được tạo ra ngẫu nhiên",
+      "D. Khóa công khai thay đổi liên tục theo thời gian"
+    ],
+    "ans": 1,
+    "exp": "Nhờ sử dụng số ngẫu nhiên k cho mỗi phiên, ElGamal là hệ mật mã xác suất (Probabilistic Encryption). Kẻ tấn công không thể kiểm tra phỏng đoán bản rõ bằng cách thử mã hóa rồi so sánh (đạt tính bảo mật ngữ nghĩa IND-CPA)."
+  },
+  {
+    "id": 159,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Hệ số mở rộng bản mã (Ciphertext expansion rate) của ElGamal là bao nhiêu so với bản rõ ban đầu?",
+    "options": [
+      "A. 1:1 (Kích thước không đổi)",
+      "B. 2:1 (Bản mã có kích thước gấp đôi bản rõ)",
+      "C. 4:1 (Bản mã gấp 4 lần bản rõ)",
+      "D. Tùy thuộc vào số lượng ký tự"
+    ],
+    "ans": 1,
+    "exp": "Vì bản mã ElGamal gồm 2 phần tử (c1, c2) đều có độ dài bằng kích thước modulo p, nên kích thước bản mã gấp 2 lần kích thước khối dữ liệu ban đầu M (tỷ lệ mở rộng 2:1)."
+  },
+  {
+    "id": 160,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Để giải mã cặp bản mã (c1, c2), người nhận sở hữu khóa bí mật x sẽ tính khóa chia sẻ tạm thời s bằng công thức nào?",
+    "options": [
+      "A. s = c1 * x mod p",
+      "B. s = (c1)^x mod p",
+      "C. s = (c2)^x mod p",
+      "D. s = g^(c1 * x) mod p"
+    ],
+    "ans": 1,
+    "exp": "Người nhận tính s = (c1)^x mod p. Do c1 = g^k mod p nên s = (g^k)^x = g^(kx) mod p. Giá trị này bằng đúng y^k = (g^x)^k = g^(kx) mod p mà người gửi đã dùng!"
+  },
+  {
+    "id": 161,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Sau khi tính được khóa chia sẻ s = (c1)^x mod p, người nhận khôi phục bản rõ M bằng cách nào?",
+    "options": [
+      "A. M = (c2 - s) mod p",
+      "B. M = (c2 * s^(-1)) mod p (với s^(-1) là phần tử nghịch đảo modulo p của s)",
+      "C. M = (c2 / s) theo phép chia số thực thông thường",
+      "D. M = (c2 XOR s)"
+    ],
+    "ans": 1,
+    "exp": "Vì c2 = (M * s) mod p, nên để khôi phục M, người nhận nhân c2 với nghịch đảo modulo s^(-1) của s theo modulo p: M = (c2 * s^(-1)) mod p."
+  },
+  {
+    "id": 162,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Theo Định lý nhỏ Fermat, nếu p là số nguyên tố thì nghịch đảo modulo s^(-1) mod p có thể được tính trực tiếp qua lũy thừa nào?",
+    "options": [
+      "A. s^(p - 1) mod p",
+      "B. s^(p - 2) mod p",
+      "C. s^(p) mod p",
+      "D. s^(p - 3) mod p"
+    ],
+    "ans": 1,
+    "exp": "Theo Fermat nhỏ, s^(p-1) ≡ 1 (mod p) => s * s^(p-2) ≡ 1 (mod p). Do đó s^(-1) ≡ s^(p-2) (mod p). Người nhận cũng có thể dùng giải thuật Euclid mở rộng để tìm nghịch đảo này."
+  },
+  {
+    "id": 163,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Điều gì sẽ xảy ra nếu người gửi vô tình tái sử dụng cùng một số ngẫu nhiên k (Nonce Reuse) để mã hóa hai thông điệp khác nhau M1 và M2?",
+    "options": [
+      "A. Không ảnh hưởng gì vì khóa bí mật x vẫn an toàn",
+      "B. Cả hai bản mã có c1 giống nhau, và kẻ tấn công có thể tính tỷ số c2_1 / c2_2 ≡ M1 / M2 (mod p) để tìm ra thông điệp",
+      "C. Quá trình giải mã sẽ báo lỗi toán học",
+      "D. Hai bản mã sẽ tự động bị hủy"
+    ],
+    "ans": 1,
+    "exp": "Nếu tái sử dụng k, thành phần c1 = g^k mod p và khóa che giấu s = y^k mod p sẽ giống hệt nhau ở cả 2 lần mã hóa. Kẻ tấn công có c2_1 / c2_2 = M1 / M2 mod p, làm lộ mối tương quan và giải mã được bản rõ nếu biết 1 trong 2 thông điệp!"
+  },
+  {
+    "id": 164,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Hệ mật mã ElGamal có mối liên hệ trực tiếp sâu sắc nhất với giao thức mật mã kinh điển nào?",
+    "options": [
+      "A. Mạng Feistel của DES",
+      "B. Giao thức Trao đổi khóa Diffie-Hellman (Diffie-Hellman Key Exchange)",
+      "C. Hàm nén Merkle-Damgård",
+      "D. Thuật toán mở rộng khóa Rijndael"
+    ],
+    "ans": 1,
+    "exp": "ElGamal có thể được xem là một sự mở rộng của giao thức trao đổi khóa Diffie-Hellman. Thành phần c1 = g^k mod p chính là khóa tạm thời của bên gửi, và s = g^(kx) mod p là bí mật chia sẻ chung được dùng để che giấu thông điệp M."
+  },
+  {
+    "id": 165,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Trong sơ đồ Chữ ký số ElGamal (ElGamal Digital Signature), chữ ký cho thông điệp M gồm cặp giá trị nào?",
+    "options": [
+      "A. Một chuỗi băm SHA-256",
+      "B. Cặp hai số nguyên (S1, S2)",
+      "C. Một số mũ bí mật d",
+      "D. Một ma trận 4x4"
+    ],
+    "ans": 1,
+    "exp": "Chữ ký số ElGamal gồm cặp số (S1, S2), trong đó S1 = g^k mod p và S2 = (H(M) - x * S1) * k^(-1) mod (p - 1)."
+  },
+  {
+    "id": 166,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Điều kiện xác minh chữ ký số ElGamal (S1, S2) cho thông điệp M bằng khóa công khai (p, g, y) là gì?",
+    "options": [
+      "A. (S1 + S2) mod p = M",
+      "B. g^M ≡ (y^S1 * S1^S2) (mod p)",
+      "C. S1^x ≡ S2 (mod p)",
+      "D. y^M ≡ g^(S1 * S2) (mod p)"
+    ],
+    "ans": 1,
+    "exp": "Người kiểm tra tính v1 = g^M mod p và v2 = (y^S1 * S1^S2) mod p. Nếu v1 = v2 thì chữ ký được công nhận là hợp lệ và xuất phát từ chính chủ sở hữu khóa bí mật x."
+  },
+  {
+    "id": 167,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Nếu kẻ tấn công phát hiện người ký tái sử dụng số ngẫu nhiên k khi tạo 2 chữ ký ElGamal khác nhau, hậu quả nghiêm trọng nhất là gì?",
+    "options": [
+      "A. Chỉ làm sai một chữ ký",
+      "B. Kẻ tấn công có thể giải hệ phương trình và khôi phục trực tiếp Khóa bí mật x của người ký",
+      "C. Người nhận không giải mã được tài liệu",
+      "D. Không gây hậu quả vì k độc lập với x"
+    ],
+    "ans": 1,
+    "exp": "Trong chữ ký số ElGamal, nếu tái sử dụng k, S1 sẽ trùng nhau. Kẻ tấn công lấy hiệu hai phương trình S2 để tính ra k, và từ đó tính ra trực tiếp khóa bí mật x! Vụ hack máy chơi game PlayStation 3 năm 2010 của Sony là do lỗi tái sử dụng số k này."
+  },
+  {
+    "id": 168,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Tiêu chuẩn Chữ ký số Quốc gia của Hoa Kỳ (NIST Digital Signature Algorithm - DSA) được phát triển dựa trên sơ đồ nào?",
+    "options": [
+      "A. Thuật toán mã hóa AES",
+      "B. Sơ đồ Chữ ký số ElGamal (ElGamal Signature Scheme)",
+      "C. Mạng thay thế hoán vị SPN",
+      "D. Hàm băm MD5"
+    ],
+    "ans": 1,
+    "exp": "DSA (FIPS 186) do viện NIST chuẩn hóa năm 1991 là một biến thể tối ưu của sơ đồ chữ ký số ElGamal, giới hạn tính toán trên một nhóm con cấp số nguyên tố q nhỏ hơn để giảm kích thước chữ ký."
+  },
+  {
+    "id": 169,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Thuật toán ElGamal sở hữu tính chất đồng cấu nào sau đây?",
+    "options": [
+      "A. Đồng cấu cộng (Additive Homomorphic)",
+      "B. Đồng cấu nhân (Multiplicative Homomorphic): E(M1) * E(M2) = E(M1 * M2)",
+      "C. Hoàn toàn đồng cấu (Fully Homomorphic - FHE)",
+      "D. Không có tính chất đồng cấu nào"
+    ],
+    "ans": 1,
+    "exp": "ElGamal có tính đồng cấu nhân: Nhân từng thành phần của 2 bản mã (c1_1 * c1_2, c2_1 * c2_2) sẽ cho ra một bản mã hợp lệ của tích hai bản rõ (M1 * M2 mod p)."
+  },
+  {
+    "id": 170,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Do có tính đồng cấu nhân và tính 'dẻo' (Malleability), ElGamal thuần túy (Textbook ElGamal) dễ bị tổn thương trước loại tấn công nào?",
+    "options": [
+      "A. Tấn công vét cạn khóa (Brute Force)",
+      "B. Tấn công bản mã chọn (Chosen Ciphertext Attack - CCA2)",
+      "C. Tấn công phân tích tần suất ký tự",
+      "D. Tấn công thời gian (Timing attack)"
+    ],
+    "ans": 1,
+    "exp": "Tính dẻo cho phép kẻ tấn công sửa đổi bản mã (c1, c2) thành (c1, 2*c2) để bản rõ sau giải mã bị nhân đôi mà không cần biết khóa bí mật. Vì vậy Textbook ElGamal không đạt mức bảo mật IND-CCA2 nếu không dùng thêm cơ chế như đệm Cramer-Shoup."
+  },
+  {
+    "id": 171,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Khái niệm 'Safe Prime' (Số nguyên tố an toàn) trong ElGamal có dạng như thế nào và có tác dụng gì?",
+    "options": [
+      "A. p = 2^n - 1 để tăng tốc độ nhân",
+      "B. p = 2q + 1 với q cũng là một số nguyên tố, nhằm ngăn chặn thuật toán tấn công Pohlig-Hellman",
+      "C. p phải là số nguyên tố nhỏ hơn 1000",
+      "D. p là tích của hai số nguyên tố bí mật"
+    ],
+    "ans": 1,
+    "exp": "Safe Prime có dạng p = 2q + 1 (q là nguyên tố Sophie Germain). Khi đó p - 1 chỉ có ước nguyên tố lớn là q, khiến thuật toán Pohlig-Hellman không thể phân rã bài toán logarithm rời rạc thành các bài toán con trên các nhóm nhỏ."
+  },
+  {
+    "id": 172,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Thuật toán nào sau đây là phương pháp mạnh nhất hiện nay dùng để giải bài toán Logarithm Rời Rạc trên trường Z_p* số lớn?",
+    "options": [
+      "A. Sàng trường số tổng quát (General Number Field Sieve - GNFS / NFS)",
+      "B. Thuật toán tìm kiếm nhị phân",
+      "C. Thuật toán sắp xếp nhanh QuickSort",
+      "D. Thuật toán quay lui Backtracking"
+    ],
+    "ans": 0,
+    "exp": "Sàng trường số (GNFS - General Number Field Sieve) là thuật toán tiệm cận nhanh nhất hiện nay để giải cả bài toán phân tích nhân tử RSA lẫn bài toán Logarithm rời rạc ElGamal trên trường hữu hạn Z_p* với độ phức tạp dưới hàm mũ."
+  },
+  {
+    "id": 173,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Kích thước khóa p của ElGamal được khuyến nghị hiện nay trong các ứng dụng thực tế để đảm bảo an toàn là bao nhiêu?",
+    "options": [
+      "A. 64-bit",
+      "B. 512-bit",
+      "C. Tối thiểu 2048-bit (khuyến nghị 3072-bit hoặc 4096-bit)",
+      "D. 128-bit"
+    ],
+    "ans": 2,
+    "exp": "Tương tự như RSA, các cơ quan an ninh mạng như NIST và ENISA khuyến nghị modulo p của ElGamal phải đạt tối thiểu 2048 bit (tương đương mức an toàn 112-bit) và nên dùng 3072 bit (an toàn 128-bit) cho các dữ liệu dài hạn."
+  },
+  {
+    "id": 174,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Biến thể của ElGamal hoạt động trên Đường cong Elliptic (Elliptic Curve ElGamal - EC-ElGamal) mang lại ưu điểm vượt trội gì?",
+    "options": [
+      "A. Cho phép không cần dùng khóa bí mật",
+      "B. Đạt cùng mức độ bảo mật nhưng với kích thước khóa nhỏ hơn nhiều (ví dụ khóa ECC 256-bit tương đương ElGamal 3072-bit)",
+      "C. Bản mã ngắn hơn bản rõ",
+      "D. Trở thành mã hóa đối xứng"
+    ],
+    "ans": 1,
+    "exp": "Do bài toán logarithm rời rạc trên đường cong Elliptic (ECDLP) khó hơn nhiều so với trên Z_p* (không áp dụng được thuật toán GNFS), EC-ElGamal chỉ cần khóa 256-bit để đạt mức bảo mật tương đương khóa 3072-bit của ElGamal truyền thống."
+  },
+  {
+    "id": 175,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Giao thức bảo mật thư điện tử nổi tiếng PGP (Pretty Good Privacy) và GnuPG sử dụng ElGamal cho mục đích gì?",
+    "options": [
+      "A. Chỉ dùng làm hàm băm tệp tin",
+      "B. Mã hóa bất đối xứng khóa công khai để bao bọc và trao đổi khóa đối xứng phiên (Session Key)",
+      "C. Thay thế hoàn toàn mã hóa đối xứng AES",
+      "D. Nén dữ liệu tệp đính kèm"
+    ],
+    "ans": 1,
+    "exp": "Trong chuẩn OpenPGP (RFC 4880), ElGamal được hỗ trợ như một thuật toán khóa công khai chính thức để mã hóa khóa phiên đối xứng (Session Key), thường kết hợp cùng DSA cho việc ký số."
+  },
+  {
+    "id": 176,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "So sánh về tốc độ thực thi giữa ElGamal và RSA, nhận định nào sau đây là chính xác?",
+    "options": [
+      "A. ElGamal luôn nhanh gấp 10 lần RSA ở mọi tác vụ",
+      "B. Quá trình mã hóa của ElGamal đòi hỏi 2 phép lũy thừa modulo nên thường chậm hơn mã hóa RSA (với e nhỏ như 65537), nhưng việc tạo khóa và sinh chữ ký rất linh hoạt",
+      "C. RSA không thể mã hóa được số lớn",
+      "D. Cả hai thuật toán có tốc độ tính toán hoàn toàn giống hệt nhau"
+    ],
+    "ans": 1,
+    "exp": "RSA mã hóa rất nhanh khi dùng số mũ công khai nhỏ e = 65537 (chỉ cần 17 phép nhân). ElGamal cần tính g^k mod p và y^k mod p với k ngẫu nhiên lớn nên mã hóa chậm hơn, bù lại tạo chữ ký số rất hiệu quả."
+  },
+  {
+    "id": 177,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Để mã hóa một thông điệp số M trong ElGamal, điều kiện bắt buộc đối với giá trị của M là gì?",
+    "options": [
+      "A. M phải là một số âm",
+      "B. 0 <= M < p (Thông điệp phải nhỏ hơn modulo p)",
+      "C. M bắt buộc phải lớn hơn p",
+      "D. M phải là lũy thừa của 2"
+    ],
+    "ans": 1,
+    "exp": "Vì các phép toán diễn ra trong trường hữu hạn Z_p*, giá trị số của thông điệp M bắt buộc phải nhỏ hơn số nguyên tố p (0 <= M < p). Nếu dữ liệu lớn hơn p, ta phải chia nhỏ dữ liệu thành nhiều khối."
+  },
+  {
+    "id": 178,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Trong trường hợp nào kẻ tấn công có thể áp dụng thuật toán Baby-step Giant-step để bẻ khóa ElGamal?",
+    "options": [
+      "A. Khi kích thước nhóm hoặc modulo p quá nhỏ (độ phức tạp O(sqrt(p)))",
+      "B. Khi khóa bí mật là một chuỗi ký tự ASCII",
+      "C. Khi số k được chọn bằng 1",
+      "D. Khi người gửi sử dụng giao thức HTTPS"
+    ],
+    "ans": 0,
+    "exp": "Thuật toán Baby-step Giant-step của Daniel Shanks giải bài toán DLP với độ phức tạp thời gian và không gian O(sqrt(N)). Nếu p nhỏ (dưới 80-bit), máy tính thông thường có thể tìm ra khóa bí mật x trong vài giây."
+  },
+  {
+    "id": 179,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Cơ chế nào sau đây là giải pháp tiêu chuẩn giúp hệ mật mã ElGamal chống lại tấn công bản mã chọn (IND-CCA2) trong thực tế?",
+    "options": [
+      "A. Hệ mật mã Cramer-Shoup hoặc tích hợp cơ chế đóng gói khóa ECIES (Elliptic Curve Integrated Encryption Scheme)",
+      "B. Giảm kích thước khóa xuống 56 bit",
+      "C. Bỏ qua thành phần c1 trong bản mã",
+      "D. Cố định giá trị k bằng 2"
+    ],
+    "ans": 0,
+    "exp": "Hệ mật mã Cramer-Shoup (1998) là một phần mở rộng chứng minh được tính an toàn trước tấn công CCA2 dựa trên ElGamal. Trong môi trường ECC, chuẩn ECIES kết hợp ElGamal với hàm KDF và mã xác thực MAC để đạt an toàn tối đa."
+  },
+  {
+    "id": 180,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Ý nghĩa lịch sử quan trọng nhất của ElGamal đối với ngành Mật mã học là gì?",
+    "options": [
+      "A. Là thuật toán đầu tiên mã hóa được văn bản chữ cái",
+      "B. Là cột mốc tiên phong chứng minh tính khả thi của mật mã dựa trên Logarithm rời rạc, khai sinh trường phái mã hóa xác suất và đặt nền móng cho chuẩn chữ ký điện tử hiện đại",
+      "C. Thay thế hoàn toàn thuật toán DES trong thanh toán thẻ ATM",
+      "D. Trở thành hàm băm một chiều an toàn nhất"
+    ],
+    "ans": 1,
+    "exp": "ElGamal là công trình đột phá khẳng định sức mạnh của bài toán Logarithm Rời Rạc, mở đường cho kỷ nguyên mã hóa xác suất (Probabilistic Encryption) và là cha đẻ trực tiếp của chuẩn chữ ký số DSS/DSA bảo vệ hàng triệu giao dịch điện tử."
   }
 ];
 if (typeof window !== 'undefined') {

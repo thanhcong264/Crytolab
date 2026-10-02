@@ -1,23 +1,24 @@
 # CryptoLab – Phòng Thí Nghiệm Mật Mã Học Tương Tác
 > **"Nhập dữ liệu – Quan sát thuật toán – Hiểu cách mật mã bảo vệ thế giới số"**
 
-CryptoLab là nền tảng giáo dục trực quan, tương tác cao giúp sinh viên, giảng viên và kỹ sư an toàn thông tin (Cybersecurity) nắm vững bản chất toán học cũng như cơ chế hoạt động của các thuật toán mật mã kinh điển và hiện đại: **DES, AES, RSA, MD5, SHA-256**.
+CryptoLab là nền tảng giáo dục trực quan, tương tác cao giúp sinh viên, giảng viên và kỹ sư an toàn thông tin (Cybersecurity) nắm vững bản chất toán học cũng như cơ chế hoạt động của các thuật toán mật mã kinh điển và hiện đại: **DES, AES, RSA, ElGamal, MD5, SHA-256**.
 
-Điểm nhấn nổi bật: **Hệ thống 50 Bài Tập & Ví Dụ Thực Hành (10 cấp độ từ Cơ bản đến Nâng cao cho mỗi thuật toán)** có hướng dẫn chi tiết từng bước và khu vực thực hành tương tác ngay trên trình duyệt.
+Điểm nhấn nổi bật: **Hệ thống 60 Bài Tập & Ví Dụ Thực Hành (10 cấp độ từ Cơ bản đến Nâng cao cho 6 thuật toán)** có hướng dẫn chi tiết từng bước và khu vực thực hành tương tác ngay trên trình duyệt.
 
 ---
 
 ## 1. Project là gì?
 
 CryptoLab được thiết kế theo triết lý **"DỄ HIỂU > ĐẸP > NHIỀU TÍNH NĂNG"** và **"TRỰC QUAN > LÝ THUYẾT KHÔ KHAN"**:
-- **50 Bài tập thực hành có hướng dẫn mẫu (Hands-on Guided Practice):** 10 bài cho mỗi thuật toán (DES, AES, RSA, MD5, SHA-256), chia theo 4 nấc thang độ khó: *Cơ bản (Level 1-3) ➔ Trung cấp (Level 4-6) ➔ Nâng cao (Level 7-9) ➔ Chuyên sâu (Level 10)*.
+- **60 Bài tập thực hành có hướng dẫn mẫu (Hands-on Guided Practice):** 10 bài cho mỗi thuật toán (DES, AES, RSA, ElGamal, MD5, SHA-256), chia theo 4 nấc thang độ khó: *Cơ bản (Level 1-3) ➔ Trung cấp (Level 4-6) ➔ Nâng cao (Level 7-9) ➔ Chuyên sâu (Level 10)*.
 - **Trực quan hóa Ma trận trạng thái (State Matrix 4x4) trong AES:** Quan sát sự thay đổi màu sắc của từng byte qua *SubBytes, ShiftRows, MixColumns, AddRoundKey*.
 - **Khám phá mạng Feistel 16 vòng trong DES:** Theo dõi từng nhánh trái $L_i$, nhánh phải $R_i$, hàm $f$, bảng mở rộng E và 8 hộp thế S-Box.
 - **Toán học RSA tương tác:** Tự chọn số nguyên tố $p, q$, tính Modulo $n$, hàm Euler $\phi(n)$, chọn $e$ và tính $d$ bằng thuật toán Euclid mở rộng.
+- **Hệ mật mã & Chữ ký số ElGamal:** Trực quan hóa Bài toán Logarithm Rời Rạc (DLP), Căn nguyên thủy (Generator $g$), Mã hóa xác suất (Probabilistic Encryption với Nonce $k$), và sơ đồ chữ ký điện tử tiền thân của chuẩn NIST DSA.
 - **Hàm băm thời gian thực (Reactive Hashing):** MD5 và SHA-256 phản hồi tức thời theo từng phím gõ.
 - **Mô phỏng Đào Bitcoin (Proof of Work):** Tìm số Nonce sao cho mã băm SHA-256 đạt độ khó số 0 ở đầu.
 - **Mô phỏng Tấn công Bảng Cầu Vồng (Rainbow Table Lookup):** Thấy tận mắt cách mật khẩu MD5 bị giải ngược trong 1 mili-giây.
-- **Bộ Trắc Nghiệm Quiz:** 6 câu hỏi then chốt kèm giải thích chuyên sâu sau khi chọn đáp án.
+- **Bộ Trắc Nghiệm Quiz Toàn Diện:** 180 câu hỏi chuyên sâu (30 câu/thuật toán) kèm thanh tiến độ, chấm điểm và giải thích cặn kẽ sau mỗi lựa chọn.
 
 ---
 
@@ -36,14 +37,14 @@ CryptoLab được thiết kế theo triết lý **"DỄ HIỂU > ĐẸP > NHI�
 ```text
 thanhcong/
 │
-├── index.html        # Ứng dụng Single-Page hoàn chỉnh (HTML5 + CSS Cyber + Engine JS + 50 Bài thực hành)
-├── README.md         # Tài liệu học tập và cẩm nang kỹ thuật chi tiết
-└── (Các tệp script phân tích dữ liệu khác)
+├── index.html        # Ứng dụng Single-Page hoàn chỉnh (HTML5 + CSS Cyber + Engine JS + 60 Bài thực hành + 180 Quiz)
+├── quiz-data.js      # Dữ liệu 180 câu hỏi trắc nghiệm phân loại theo 6 thuật toán
+└── README.md         # Tài liệu học tập và cẩm nang kỹ thuật chi tiết
 ```
 
 ---
 
-## 4. Hệ Thống 50 Bài Tập & Ví Dụ Thực Hành (10 Cấp Độ)
+## 4. Hệ Thống 60 Bài Tập & Ví Dụ Thực Hành (10 Cấp Độ)
 
 Mỗi bài tập được thiết kế chuẩn sư phạm 3 phần:
 1. 📖 **Ví dụ mẫu & Hướng dẫn cụ thể từng bước:** Giải thích cặn kẽ nguyên lý, công thức và dữ liệu mẫu.
@@ -86,7 +87,19 @@ Mỗi bài tập được thiết kế chuẩn sư phạm 3 phần:
 - **Level 9 (Nâng cao):** Mã hóa chuỗi văn bản ASCII thành mảng số bản mã.
 - **Level 10 (Chuyên sâu):** Tính chất đồng cấu của Textbook RSA và chuẩn đệm an toàn RSA-OAEP.
 
-### D. MD5 (10 Cấp độ):
+### D. ElGamal (10 Cấp độ):
+- **Level 1 (Cơ bản):** Kiểm tra Căn nguyên thủy (Primitive Root / Generator $g$ modulo $p$).
+- **Level 2 (Cơ bản):** Sinh cặp khóa ElGamal $(p, g, x \to y = g^x \pmod p)$.
+- **Level 3 (Cơ bản):** Chọn số ngẫu nhiên bí mật phiên $k$ thỏa mãn $\gcd(k, p-1) = 1$.
+- **Level 4 (Trung cấp):** Tính thành phần bản mã thứ nhất $c_1 = g^k \pmod p$.
+- **Level 5 (Trung cấp):** Tính khóa tạm thời $s = y^k \pmod p$ và bản mã $c_2 = M \cdot s \pmod p$.
+- **Level 6 (Trung cấp):** Tìm nghịch đảo modulo $s^{-1} \pmod p$ bằng thuật toán Euclid mở rộng.
+- **Level 7 (Nâng cao):** Giải mã hoàn chỉnh khôi phục bản rõ $M = c_2 \cdot s^{-1} \pmod p$.
+- **Level 8 (Nâng cao):** Mã hóa chuỗi ký tự văn bản ASCII thành danh sách cặp $(c_1, c_2)$.
+- **Level 9 (Nâng cao):** Lỗ hổng tái sử dụng Nonce $k$ (Nonce Reuse Attack) và phá vỡ bí mật thông điệp.
+- **Level 10 (Chuyên sâu):** Chữ ký số ElGamal: Sinh cặp chữ ký $(S_1, S_2)$ và thuật toán xác minh $g^M \equiv y^{S_1} \cdot S_1^{S_2} \pmod p$.
+
+### E. MD5 (10 Cấp độ):
 - **Level 1 (Cơ bản):** Mã băm MD5 kinh điển của chuỗi rỗng.
 - **Level 2 (Cơ bản):** Kích thước đầu ra luôn cố định 128 bit (32 ký tự hex).
 - **Level 3 (Cơ bản):** Cơ chế đệm dữ liệu (Padding: bit 1 + các bit 0 + độ dài 64-bit Little-Endian).
@@ -98,7 +111,7 @@ Mỗi bài tập được thiết kế chuẩn sư phạm 3 phần:
 - **Level 9 (Nâng cao):** Mô phỏng tấn công tra cứu Bảng Cầu Vồng (Rainbow Table Lookup).
 - **Level 10 (Chuyên sâu):** Phân tích và minh họa tấn công va chạm (MD5 Collision Attack).
 
-### E. SHA-256 (10 Cấp độ):
+### F. SHA-256 (10 Cấp độ):
 - **Level 1 (Cơ bản):** Giá trị băm chuỗi rỗng nổi tiếng `e3b0c442...` của SHA-256.
 - **Level 2 (Cơ bản):** Độ nhạy tuyệt đối: Hiệu ứng Tuyết lở (Avalanche Effect).
 - **Level 3 (Cơ bản):** Cơ chế đệm thông điệp 512-bit (Big-Endian Padding).
@@ -119,4 +132,5 @@ Mỗi bài tập được thiết kế chuẩn sư phạm 3 phần:
 - **DES:** Không sử dụng cho bất kỳ hệ thống mới nào vì khóa 56-bit có thể bị vét cạn trong vài giờ.
 - **MD5:** Đã bị vỡ hoàn toàn về mặt chống va chạm (Collision). Không dùng MD5 để lưu mật khẩu hay chứng thực số.
 - **Textbook RSA:** Bắt buộc phải sử dụng kèm đệm ngẫu nhiên **RSA-OAEP** với độ dài khóa tối thiểu 2048-bit.
+- **ElGamal:** Bắt buộc sử dụng số nguyên tố an toàn (Safe prime $p = 2q + 1$) tối thiểu 2048-bit, chọn số ngẫu nhiên $k$ hoàn toàn độc lập và tuyệt đối không bao giờ tái sử dụng $k$.
 - **AES:** Luôn sử dụng kèm các chế độ xác thực toàn vẹn như **AES-GCM**, không dùng chế độ ECB thô.

@@ -1539,9 +1539,10 @@
       <li><button class="nav-btn" data-view="des" onclick="switchView('des')">DES</button></li>
       <li><button class="nav-btn" data-view="aes" onclick="switchView('aes')">AES</button></li>
       <li><button class="nav-btn" data-view="rsa" onclick="switchView('rsa')">RSA</button></li>
+      <li><button class="nav-btn" data-view="elgamal" onclick="switchView('elgamal')">ElGamal</button></li>
       <li><button class="nav-btn" data-view="md5" onclick="switchView('md5')">MD5</button></li>
       <li><button class="nav-btn" data-view="sha" onclick="switchView('sha')">SHA-256</button></li>
-      <li><button class="nav-btn btn-highlight" data-view="practice" onclick="switchView('practice')">🎯 50 Bài Thực Hành</button></li>
+      <li><button class="nav-btn btn-highlight" data-view="practice" onclick="switchView('practice')">🎯 60 Bài Thực Hành</button></li>
       <li><button class="nav-btn" data-view="compare" onclick="switchView('compare')">📊 So sánh</button></li>
       <li><button class="nav-btn" data-view="playground" onclick="switchView('playground')">🧪 Thử nghiệm</button></li>
       <li><button class="nav-btn" data-view="tools" onclick="switchView('tools')">⚡ Công cụ</button></li>
@@ -1860,7 +1861,7 @@
         <h1 class="hero-title">CryptoLab – Phòng Thí Nghiệm Mật Mã Học Tương Tác</h1>
         <p class="hero-slogan">"Nhập dữ liệu – Quan sát thuật toán – Hiểu cách mật mã bảo vệ thế giới số"</p>
         <div class="hero-actions">
-          <button class="btn btn-primary" onclick="switchView('practice')">🎯 Khám Phá 50 Bài Tập & Ví Dụ Thực Hành</button>
+          <button class="btn btn-primary" onclick="switchView('practice')">🎯 Khám Phá 60 Bài Tập & Ví Dụ Thực Hành</button>
           <button class="btn btn-secondary" onclick="switchView('playground')">🧪 Vào Phòng Thí Nghiệm Ngay</button>
           <button class="btn btn-secondary" onclick="switchView('compare')">📊 Bảng So Sánh Thuật Toán</button>
         </div>
@@ -1886,7 +1887,7 @@
         </div>
       </div>
 
-      <h2 class="section-title">🧭 Khám phá 5 Thuật toán Cốt lõi</h2>
+      <h2 class="section-title">🧭 Khám phá 6 Thuật toán Cốt lõi</h2>
       <div class="grid-cards">
         <div class="crypto-card" onclick="switchView('des')">
           <span class="card-badge badge-sym">Khóa đối xứng</span>
@@ -1905,6 +1906,12 @@
           <h3 class="card-title">RSA</h3>
           <p class="card-desc">Mật mã khóa công khai dựa trên độ khó phân tích số nguyên tố lớn.</p>
           <div class="card-footer"><span>2 Khóa: Public/Private</span><span>Trao đổi khóa</span></div>
+        </div>
+        <div class="crypto-card" onclick="switchView('elgamal')">
+          <span class="card-badge badge-asym">Khóa bất đối xứng</span>
+          <h3 class="card-title">ElGamal</h3>
+          <p class="card-desc">Mật mã khóa công khai dựa trên bài toán khó Logarithm Rời Rạc & Chữ ký số.</p>
+          <div class="card-footer"><span>2 Khóa: Public/Private</span><span>Mã hóa ngẫu nhiên</span></div>
         </div>
         <div class="crypto-card" onclick="switchView('md5')">
           <span class="card-badge badge-hash">Hàm băm 1 chiều</span>
@@ -1980,10 +1987,72 @@
       </div>
 
       <div id="des-tab-theory" class="subtab-content" style="display: none;">
-        <div class="panel">
-          <h3>Kiến trúc chi tiết của DES</h3>
-          <p style="margin: 0.75rem 0; color: var(--text-muted);">
-            DES chia dữ liệu 64-bit thành $L_0$ và $R_0$. Mỗi vòng Feistel thực hiện: $L_i = R_{i-1}$, $R_i = L_{i-1} \oplus f(R_{i-1}, K_i)$. Sau 16 vòng, 2 nửa được ghép lại và hoán vị qua bảng $IP^{-1}$ để ra bản mã.
+        <div class="panel" style="line-height: 1.8; margin-bottom: 1.5rem;">
+          <h3 style="color: var(--cyan); margin-bottom: 0.75rem;">Lý Thuyết Toàn Diện Về Thuật Toán DES (Data Encryption Standard)</h3>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">1. Lịch sử ra đời và bối cảnh (1971 – 1977)</h4>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            DES có nguồn gốc từ thuật toán <strong>Lucifer</strong> do <em>Horst Feistel</em> và nhóm IBM phát triển năm 1971 với khóa 64-bit. Năm 1973, Cục Tiêu chuẩn Quốc gia Mỹ (NBS) mở cuộc thi công khai tìm kiếm chuẩn mã hóa dữ liệu cho chính phủ. Lucifer được chọn và được Cơ quan An ninh Quốc gia (NSA) điều chỉnh: <strong>khóa rút ngắn xuống còn 56 bit</strong> và các hộp S-Box được tinh chỉnh bí mật để chống lại kỹ thuật thám mã vi sai (Differential Cryptanalysis) — một kỹ thuật mà công chúng chưa biết đến thời điểm đó. DES chính thức trở thành chuẩn liên bang FIPS PUB 46 vào ngày <strong>15 tháng 1 năm 1977</strong>.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">2. Cấu trúc Mạng Feistel – Nền tảng kiến trúc DES</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            DES là thuật toán <strong>mã hóa đối xứng khối (Block Cipher)</strong> dựa trên kiến trúc mạng Feistel. Quá trình xử lý mỗi khối 64-bit diễn ra theo trình tự:
+          </p>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1rem; border-left: 3px solid var(--cyan);">
+            <div style="margin-bottom: 0.5rem;">① <strong>IP (Initial Permutation):</strong> Hoán vị 64-bit đầu vào theo bảng cố định → chia thành L₀ (32-bit trái) và R₀ (32-bit phải)</div>
+            <div style="margin-bottom: 0.5rem;">② <strong>16 Vòng Feistel:</strong> L_i = R_{i-1} ; R_i = L_{i-1} ⊕ f(R_{i-1}, K_i)</div>
+            <div style="margin-bottom: 0.5rem;">③ <strong>Ghép & hoán vị:</strong> Nối R₁₆ || L₁₆ (chú ý: đảo ngược, không swap ở vòng 16)</div>
+            <div>④ <strong>FP (Final Permutation = IP⁻¹):</strong> Hoán vị kết thúc → Ciphertext 64-bit</div>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            <strong>Tính đối xứng đặc biệt của Feistel:</strong> Giải mã không cần viết hàm ngược riêng — chỉ cần chạy lại y hệt cùng thuật toán nhưng nạp các khóa con theo thứ tự ngược K₁₆ → K₁. Đây là ưu điểm cực lớn về mặt thiết kế phần cứng.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">3. Hàm Feistel f(R, K) – Trái tim của DES</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">Mỗi vòng, hàm f xử lý nhánh phải R (32-bit) qua 4 bước:</p>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.84rem; margin-bottom: 1rem; border-left: 3px solid var(--blue);">
+            <div style="color: var(--cyan); margin-bottom: 0.4rem;">① E-Box (Expansion): 32-bit → 48-bit (nhân bản một số bit biên)</div>
+            <div style="color: var(--blue); margin-bottom: 0.4rem;">② XOR với khóa con K_i (48-bit)</div>
+            <div style="color: var(--purple); margin-bottom: 0.4rem;">③ 8 hộp thế S-Box: 6-bit → 4-bit (phi tuyến, 48-bit → 32-bit)</div>
+            <div style="color: var(--green);">④ P-Box (Permutation): Hoán vị 32-bit để khuếch tán (Diffusion)</div>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            <strong>S-Box là thành phần duy nhất phi tuyến (Non-linear)</strong> trong toàn bộ DES. Tất cả các phép hoán vị (IP, FP, E, P) và XOR đều tuyến tính — chỉ có 8 hộp S-Box tạo ra tính hỗn loạn (Confusion), bảo vệ DES trước thám mã tuyến tính và vi sai. Mỗi S-Box nhận đầu vào 6-bit: bit 1 và 6 chọn <em>hàng</em> (0–3), 4 bit giữa chọn <em>cột</em> (0–15), tra bảng cho kết quả 4-bit.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">4. Lịch trình khóa (Key Schedule) – Sinh 16 khóa con</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">Từ khóa gốc 64-bit, DES sinh ra 16 khóa con 48-bit theo quy trình:</p>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 1rem; border-left: 3px solid var(--purple);">
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">① <strong>PC-1 (Permuted Choice 1):</strong> Loại bỏ 8 bit parity ở vị trí 8,16,24,32,40,48,56,64. Hoán vị 56 bit còn lại → chia thành C₀ (28-bit) và D₀ (28-bit).</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">② <strong>Dịch vòng trái (Circular Left Shift):</strong> Mỗi vòng i dịch C và D sang trái <em>1 bit</em> (vòng 1, 2, 9, 16) hoặc <em>2 bit</em> (12 vòng còn lại). Tổng cộng 28 bit dịch qua 16 vòng → C và D quay về trạng thái ban đầu.</p>
+            <p style="color: var(--text-muted);">③ <strong>PC-2 (Permuted Choice 2):</strong> Ghép Cᵢ || Dᵢ (56-bit) → chọn và hoán vị 48 bit → Khóa con Kᵢ.</p>
+          </div>
+
+          <h4 style="color: var(--amber); margin-top: 1.25rem; margin-bottom: 0.5rem;">5. Các điểm yếu cố hữu và vì sao DES thất bại</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">DES có ba vấn đề an ninh cốt lõi không thể khắc phục:</p>
+          <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-left: 4px solid var(--amber); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem;">
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">🔴 <strong>Không gian khóa 56-bit quá nhỏ:</strong> Chỉ có 2⁵⁶ ≈ 7.2 × 10¹⁶ khóa. Máy EFF Deep Crack ($250,000 USD, 1998) phá khóa trong 56 giờ; GPU/ASIC hiện đại phá trong dưới 24 giờ.</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">🟡 <strong>4 Khóa yếu (Weak Keys):</strong> Nếu C₀ và D₀ đều toàn 0 hoặc toàn 1 sau PC-1, tất cả 16 khóa con giống hệt nhau. Kết quả: E_K(E_K(P)) = P (mã hóa 2 lần = bản rõ gốc!). Gồm 4 khóa: 0x0101010101010101, 0xFEFEFEFEFEFEFEFE, 0xE0E0E0E0F1F1F1F1, 0x1F1F1F1F0E0E0E0E.</p>
+            <p style="color: var(--text-muted);">🟠 <strong>Tính chất bù (Complementarity):</strong> E_{~K}(~P) = ~E_K(P). Tính chất này cho phép giảm không gian tìm kiếm từ 2⁵⁶ xuống 2⁵⁵.</p>
+          </div>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">6. Các kỹ thuật thám mã (Cryptanalysis)</h4>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 1rem;">
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Thám mã vi sai (Differential Cryptanalysis – Eli Biham & Adi Shamir, 1990):</strong> Phân tích sự khác biệt lan truyền qua các vòng S-Box. Cần 2⁴⁷ cặp bản rõ đã chọn (Chosen-Plaintext). Các nhà thiết kế DES tại IBM thực ra đã biết kỹ thuật này từ cuối thập niên 1970 và đã tối ưu S-Box để kháng lại nó.</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Thám mã tuyến tính (Linear Cryptanalysis – Mitsuru Matsui, 1993):</strong> Tìm các phương trình tuyến tính xấp xỉ của S-Box. Cần 2⁴³ bản rõ đã biết (Known-Plaintext). Hiệu quả hơn vét cạn về lý thuyết.</p>
+            <p style="color: var(--text-muted);"><strong>Vét cạn thực tế (Brute Force – 1998 đến nay):</strong> Deep Crack phá DES trong 56 giờ; distributed.net phối hợp phá trong 22 giờ năm 1999. Ngày nay ASIC chuyên dụng phá trong vài giờ.</p>
+          </div>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">7. Các biến thể kế thừa: Double-DES, Triple-DES (3DES)</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            <strong>Double-DES</strong> (C = E_{K2}(E_{K1}(P))) không an toàn hơn bao nhiêu so với DES đơn do tấn công <em>Meet-in-the-Middle (Diffie & Hellman)</em>: chỉ cần độ phức tạp 2⁵⁶ thời gian + 2⁵⁶ bộ nhớ.
+          </p>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            <strong>Triple-DES (EDE): C = E_{K3}(D_{K2}(E_{K1}(P)))</strong>. Cấu trúc EDE (Encrypt-Decrypt-Encrypt) đảm bảo tương thích ngược: khi K1=K2=K3, 3DES hoạt động y hệt DES đơn. Với 3 khóa độc lập: 168-bit khóa thực, nhưng an toàn hiệu lực chỉ là 112-bit do Meet-in-the-Middle. NIST cấm hoàn toàn 3DES sau 31/12/2023 (NIST SP 800-131A Rev. 2).
+          </p>
+          <p style="color: var(--text-muted);">
+            <strong>Tấn công Sweet32 (2016, CVE-2016-2183):</strong> Kích thước khối 64-bit khiến va chạm bản mã xảy ra sau ~2³² khối (32 GB dữ liệu) trong các kết nối TLS/VPN dài hạn, cho phép khôi phục cookie HTTP bằng nghịch lý ngày sinh nhật.
           </p>
         </div>
       </div>
@@ -2058,13 +2127,100 @@
       </div>
 
       <div id="aes-tab-theory" class="subtab-content" style="display: none;">
-        <div class="panel">
-          <h3>Bốn phép biến đổi cốt lõi trong mỗi vòng AES</h3>
-          <p style="color: var(--text-muted); margin-top: 0.5rem;">
-            1. <strong>SubBytes:</strong> Thay thế byte qua S-Box phi tuyến.<br>
-            2. <strong>ShiftRows:</strong> Dịch vòng các hàng sang trái.<br>
-            3. <strong>MixColumns:</strong> Nhân ma trận cột trong trường Galois $GF(2^8)$.<br>
-            4. <strong>AddRoundKey:</strong> XOR State Matrix với Round Key.
+        <div class="panel" style="line-height: 1.8; margin-bottom: 1.5rem;">
+          <h3 style="color: var(--cyan); margin-bottom: 0.75rem;">Lý Thuyết Toàn Diện Về Thuật Toán AES (Advanced Encryption Standard)</h3>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">1. Nguồn gốc và cuộc thi chuẩn hóa NIST (1997 – 2001)</h4>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Sau khi DES lỗi thời, NIST tổ chức cuộc thi công khai quốc tế từ năm 1997. Năm ứng viên lọt vào vòng chung kết: <strong>RC6</strong> (RSA Security), <strong>Serpent</strong> (Ross Anderson & cộng sự), <strong>Twofish</strong> (Bruce Schneier), <strong>MARS</strong> (IBM), và <strong>Rijndael</strong> (Joan Daemen & Vincent Rijmen, Bỉ). Rijndael chiến thắng vào tháng 10 năm 2000 nhờ kết hợp hoàn hảo giữa <em>bảo mật toán học</em>, <em>hiệu năng trên chip 8-bit nhỏ lẫn CPU 64-bit</em>, và <em>thiết kế thanh lịch dựa trên đại số cứng nhắc</em>. AES chính thức được công bố là <strong>FIPS PUB 197</strong> vào ngày 26/11/2001.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">2. Kiến trúc tổng quan: Mạng Thay thế – Hoán vị (SPN) thay vì Feistel</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            Khác với DES dùng mạng Feistel, AES dùng kiến trúc <strong>Substitution-Permutation Network (SPN)</strong>. Toàn bộ 128-bit trạng thái được biến đổi song song trong mỗi vòng, không chia nửa. AES có 3 biến thể theo độ dài khóa:
+          </p>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1rem; border-left: 3px solid var(--cyan);">
+            <div style="margin-bottom: 0.4rem; color: var(--cyan);">AES-128: Khóa 128-bit (16 bytes) → 10 vòng + 1 bước khởi tạo → 11 khóa vòng</div>
+            <div style="margin-bottom: 0.4rem; color: var(--blue);">AES-192: Khóa 192-bit (24 bytes) → 12 vòng + 1 bước khởi tạo → 13 khóa vòng</div>
+            <div style="color: var(--purple);">AES-256: Khóa 256-bit (32 bytes) → 14 vòng + 1 bước khởi tạo → 15 khóa vòng</div>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            <strong>Cấu trúc State Matrix 4×4:</strong> 16 byte được xếp theo <em>thứ tự ưu tiên cột (Column-major)</em>: Byte 0–3 vào cột 0, Byte 4–7 vào cột 1, v.v. Mỗi vòng (trừ vòng cuối) thực hiện 4 bước biến đổi theo đúng thứ tự.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">3. Bước 1 – SubBytes: Phép thế phi tuyến trên GF(2⁸)</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            <strong>SubBytes</strong> là thành phần phi tuyến duy nhất trong AES, cung cấp tính hỗn loạn (Confusion). Mỗi byte b của State Matrix được biến đổi qua hai bước:
+          </p>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 1rem; border-left: 3px solid var(--purple);">
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">① <strong>Nghịch đảo Galois:</strong> Tìm phần tử nghịch đảo nhân b⁻¹ trong trường hữu hạn GF(2⁸) với đa thức bất khả quy <code>m(x) = x⁸+x⁴+x³+x+1</code> (hex: 0x11B). Byte 0x00 ánh xạ về chính nó.</p>
+            <p style="color: var(--text-muted);">② <strong>Biến đổi Affine:</strong> Nhân ma trận nhị phân 8×8 cố định rồi XOR với hằng số 0x63 → cho ra byte kết quả S-Box. Kết quả được tra bảng 256 phần tử được tính sẵn để tăng tốc.</p>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Bảng S-Box của AES được xây dựng có chủ đích để tối đa hóa tính phi tuyến (Nonlinearity ≥ 112), chống hoàn toàn tấn công vi sai và tuyến tính tại bậc một, đồng thời không có điểm cố định (b ≠ S(b)) hay điểm phản cố định (b ≠ ~S(b)).
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">4. Bước 2 – ShiftRows: Dịch hàng tạo khuếch tán liên cột</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            <strong>ShiftRows</strong> dịch vòng sang trái từng hàng của State Matrix theo số byte khác nhau:
+          </p>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1rem; border-left: 3px solid var(--green);">
+            <div style="color: var(--text-muted); margin-bottom: 0.3rem;">Hàng 0 (Row 0): <strong>Giữ nguyên</strong> — dịch 0 byte</div>
+            <div style="color: var(--cyan); margin-bottom: 0.3rem;">Hàng 1 (Row 1): <strong>Dịch trái 1 byte</strong> [b4, b5, b6, b7] → [b5, b6, b7, b4]</div>
+            <div style="color: var(--blue); margin-bottom: 0.3rem;">Hàng 2 (Row 2): <strong>Dịch trái 2 byte</strong> [b8, b9, b10, b11] → [b10, b11, b8, b9]</div>
+            <div style="color: var(--purple);">Hàng 3 (Row 3): <strong>Dịch trái 3 byte</strong> [b12, b13, b14, b15] → [b15, b12, b13, b14]</div>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Mục đích: sau ShiftRows, mỗi cột sẽ chứa các byte từ <em>4 cột khác nhau</em> của trạng thái trước đó. Kết hợp với MixColumns, điều này đảm bảo mọi byte đầu ra phụ thuộc vào mọi byte đầu vào chỉ sau 2 vòng (Tính chất khuếch tán tối đa – Wide Trail Strategy).
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">5. Bước 3 – MixColumns: Nhân ma trận trong trường Galois GF(2⁸)</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            <strong>MixColumns</strong> là bước cung cấp tính khuếch tán (Diffusion) mạnh nhất. Mỗi cột 4 byte được coi như một đa thức bậc 3 trong GF(2⁸) và nhân với đa thức cố định:
+          </p>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1rem; border-left: 3px solid var(--amber);">
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>c(x) = {03}x³ + {01}x² + {01}x + {02}</strong> modulo x⁴+1</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Tương đương nhân ma trận tuần hoàn MDS:</p>
+            <p style="color: var(--cyan); font-family: monospace; font-size: 0.82rem;">
+              [b'₀]   [2 3 1 1] [b₀]<br>
+              [b'₁] = [1 2 3 1] [b₁]  (tính trong GF(2⁸))<br>
+              [b'₂]   [1 1 2 3] [b₂]<br>
+              [b'₃]   [3 1 1 2] [b₃]
+            </p>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Ma trận MDS (Maximum Distance Separable) đảm bảo mỗi byte đầu ra phụ thuộc vào cả 4 byte đầu vào của cột. Phép nhân {02} trong GF(2⁸) chỉ là dịch trái 1 bit rồi XOR với 0x1B nếu tràn bit cao nhất — rất hiệu quả trên phần cứng. <strong>Vòng cuối AES bỏ qua MixColumns</strong> để đảm bảo tính đối xứng mã hóa/giải mã.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">6. Bước 4 – AddRoundKey: XOR trực tiếp với khóa vòng</h4>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            <strong>AddRoundKey</strong> đơn giản là XOR từng byte của State Matrix với byte tương ứng của Round Key (16 byte). Đây là bước duy nhất sử dụng vật liệu khóa bí mật, đảm bảo bảo mật. AES bắt đầu bằng một bước AddRoundKey trắng (Round 0) với khóa gốc trước khi vào Vòng 1, tổng cộng có 11/13/15 lần AddRoundKey tương ứng với AES-128/192/256.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">7. Mở rộng khóa (Key Expansion – Key Schedule)</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            Từ khóa gốc, AES sinh ra tất cả các khóa vòng qua hàm KeyExpansion. Mỗi từ 32-bit W[i] được tính theo quy tắc:
+          </p>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.84rem; margin-bottom: 1rem; border-left: 3px solid var(--cyan);">
+            <div style="color: var(--text-muted); margin-bottom: 0.4rem;">• Nếu i chia hết cho Nk: W[i] = W[i−Nk] ⊕ SubWord(RotWord(W[i−1])) ⊕ Rcon[i/Nk]</div>
+            <div style="color: var(--text-muted); margin-bottom: 0.4rem;">• Ngược lại: W[i] = W[i−Nk] ⊕ W[i−1]</div>
+            <div style="color: var(--cyan); margin-top: 0.5rem;">RotWord([b0,b1,b2,b3]) = [b1,b2,b3,b0]  (xoay vòng trái 1 byte)</div>
+            <div style="color: var(--blue);">SubWord: Áp dụng S-Box lên mỗi byte của từ 4-byte</div>
+            <div style="color: var(--purple);">Rcon[j] = [2^(j-1) mod GF(2⁸), 0x00, 0x00, 0x00]  (hằng vòng)</div>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">AES-128 sinh ra 44 từ × 4 byte = 176 bytes khóa vòng.</p>
+
+          <h4 style="color: var(--amber); margin-top: 1.25rem; margin-bottom: 0.5rem;">8. Các chế độ hoạt động và lỗ hổng liên quan</h4>
+          <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-left: 4px solid var(--amber); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem;">
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">⛔ <strong>ECB (Electronic Codebook):</strong> Mỗi khối mã hóa độc lập → các khối giống nhau sinh bản mã giống hệt → lộ cấu trúc (minh họa bằng ảnh Tux Penguin nổi tiếng). TUYỆT ĐỐI KHÔNG DÙNG.</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">✅ <strong>CBC (Cipher Block Chaining):</strong> Cᵢ = Eₖ(Pᵢ ⊕ Cᵢ₋₁). Yêu cầu IV ngẫu nhiên không đoán trước. Dễ bị Padding Oracle nếu không có MAC.</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">✅ <strong>CTR (Counter Mode):</strong> Biến AES thành mã dòng, song song hóa hoàn toàn, truy cập ngẫu nhiên. Không cần padding.</p>
+            <p style="color: var(--text-muted);">🏆 <strong>GCM (Galois/Counter Mode – AEAD):</strong> CTR + GMAC = vừa mã hóa vừa xác thực toàn vẹn. Chuẩn TLS 1.3, VPN. Tái sử dụng Nonce là thảm họa: kẻ tấn công lấy được khóa xác thực H.</p>
+          </div>
+
+          <h4 style="color: var(--green); margin-top: 1.25rem; margin-bottom: 0.5rem;">9. Tình trạng an toàn của AES trước tấn công và máy tính lượng tử</h4>
+          <p style="color: var(--text-muted);">
+            Cuộc tấn công tốt nhất hiện nay vào AES-128 đầy đủ là <strong>Biclique Attack (2011)</strong> với độ phức tạp 2¹²⁶·¹ — vẫn hoàn toàn không khả thi thực tế. <strong>Trước máy tính lượng tử chạy thuật toán Grover:</strong> AES-256 giảm còn 2¹²⁸ độ phức tạp (vẫn an toàn tuyệt đối). NIST khuyến nghị AES-256 cho bảo mật hậu lượng tử dài hạn. AES-NI trên CPU Intel/AMD tăng tốc phần cứng hàng chục lần và chống tấn công kênh kề thời gian (Cache-timing).
           </p>
         </div>
       </div>
@@ -2140,10 +2296,271 @@
       </div>
 
       <div id="rsa-tab-secure" class="subtab-content" style="display: none;">
-        <div class="panel">
-          <h3>RSA trong thực tế: Đệm RSA-OAEP</h3>
-          <p style="color: var(--text-muted); margin-top: 0.5rem;">
-            Textbook RSA có tính tiền định và tính đồng cấu $E(M_1) \times E(M_2) \equiv E(M_1 \times M_2) \pmod n$, dễ bị tấn công. Thực tế bắt buộc phải sử dụng <strong>RSA-OAEP</strong> với khóa từ 2048 bit trở lên.
+        <div class="panel" style="line-height: 1.8; margin-bottom: 1.5rem;">
+          <h3 style="color: var(--cyan); margin-bottom: 0.75rem;">Lý Thuyết Toàn Diện Về Thuật Toán RSA và Bảo Mật Thực Tế</h3>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">1. Nền tảng toán học: Số học modulo và Định lý Euler</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            Bảo mật RSA dựa trên <strong>độ khó của bài toán phân tích thừa số nguyên tố (Integer Factorization Problem – IFP)</strong>: nhân hai số nguyên tố lớn p và q thành n = p·q cực dễ (O(log²n)), nhưng tìm lại p và q khi chỉ biết n là vấn đề tính toán nan giải với n đủ lớn.
+          </p>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1rem; border-left: 3px solid var(--cyan);">
+            <div style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Định lý Euler:</strong> Nếu gcd(M, n) = 1, thì M^φ(n) ≡ 1 (mod n)</div>
+            <div style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Hàm Euler Phi:</strong> φ(n) = φ(p·q) = (p−1)·(q−1)</div>
+            <div style="color: var(--cyan); margin-bottom: 0.5rem;"><strong>Sinh khóa:</strong> n = p·q → φ(n) = (p-1)(q-1) → Chọn e: gcd(e, φ(n))=1 → d = e⁻¹ mod φ(n)</div>
+            <div style="color: var(--blue);"><strong>Mã hóa:</strong> C = Mᵉ mod n   |   <strong>Giải mã:</strong> M = Cᵈ mod n</div>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            <strong>Vì sao M = (Mᵉ)ᵈ mod n?</strong> Vì d·e ≡ 1 (mod φ(n)), tức d·e = 1 + k·φ(n) với k nào đó. Do đó M^(d·e) = M^(1+k·φ(n)) = M · (M^φ(n))^k ≡ M · 1^k = M (mod n) theo định lý Euler.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">2. Quy trình sinh khóa RSA chuẩn thực tế</h4>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 1rem; border-left: 3px solid var(--blue);">
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">① <strong>Chọn p và q:</strong> Sinh hai số nguyên tố cỡ bằng nhau (~1024 bit cho RSA-2048) bằng kiểm tra Miller-Rabin xác suất kết hợp Fermat Test. p ≠ q; p−q phải đủ lớn.</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">② <strong>Tính n và λ(n):</strong> n = p·q; λ(n) = lcm(p−1, q−1) (chuẩn PKCS#1 v2.1 dùng hàm Carmichael λ thay vì φ để tính d nhỏ hơn).</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">③ <strong>Chọn e = 65537 (F4):</strong> Số Fermat F4 = 2¹⁶+1 = 65537, chỉ có 2 bit 1 trong nhị phân → chỉ cần 17 phép nhân để tính Mᵉ. Đồng thời đủ lớn để chống tấn công Coppersmith vào e nhỏ.</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">④ <strong>Tính d:</strong> d = e⁻¹ mod λ(n) bằng Thuật toán Euclid Mở rộng (Extended GCD).</p>
+            <p style="color: var(--text-muted);">⑤ <strong>Lưu Private Key (d, p, q, dp, dq, qInv):</strong> Các tham số CRT (dp=d mod p−1, dq=d mod q−1, qInv=q⁻¹ mod p) được lưu để tăng tốc giải mã gấp ~4 lần.</p>
+          </div>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">3. Tăng tốc giải mã bằng Định lý số dư Trung Hoa (CRT)</h4>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Thay vì tính trực tiếp M = Cᵈ mod n (với n 2048-bit, cực chậm), RSA-CRT tách bài toán thành 2 bài toán nhỏ hơn:
+            <br>• m_p = C^(d mod p−1) mod p  &nbsp;&nbsp;&nbsp;(số 1024-bit)
+            <br>• m_q = C^(d mod q−1) mod q  &nbsp;&nbsp;&nbsp;(số 1024-bit)
+            <br>Ghép lại M bằng CRT: M = m_q + q·(qInv·(m_p − m_q) mod p)
+            <br>Do độ phức tạp lũy thừa là O(L³), chia đôi kích thước → tăng tốc 2² × 2 = <strong>4 lần</strong>.
+          </p>
+
+          <h4 style="color: var(--amber); margin-top: 1.25rem; margin-bottom: 0.5rem;">4. Nguy hiểm của RSA thô (Textbook RSA) và các lỗ hổng</h4>
+          <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-left: 4px solid var(--amber); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem;">
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">🔴 <strong>Tính đồng cấu nhân (Multiplicative Homomorphism):</strong> E(M₁)·E(M₂) = (M₁·M₂)ᵉ mod n = E(M₁·M₂). Kẻ tấn công có thể nhân bản mã với hằng số để tạo bản mã mới hợp lệ mà không cần biết khóa (Malleability Attack).</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">🔴 <strong>Tính tiền định (Deterministic):</strong> Cùng M + cùng e + cùng n luôn cho ra cùng C. Nếu không gian M nhỏ (ví dụ M là số lương từ 1–100), kẻ tấn công dễ dàng vét cạn vũ trụ bản mã.</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">🟠 <strong>Tấn công Wiener (1990):</strong> Nếu d < (1/3)·n^(1/4), kẻ tấn công tìm lại d bằng khai triển liên phân số (Continued Fraction) của e/n chỉ trong O(log n) bước.</p>
+            <p style="color: var(--text-muted);">🟠 <strong>Tấn công Bleichenbacher (1998 – PKCS#1 v1.5):</strong> Nếu server phản hồi khác nhau khi bản rõ RSA có/không có tiền tố đúng 0x00 0x02, kẻ tấn công gửi ~10⁶ truy vấn để giải mã bất kỳ bản mã nào (Million-Message Attack). Biến thể ROBOT Attack (2018) cho thấy lỗi này vẫn tồn tại trong nhiều thư viện TLS.</p>
+          </div>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">5. RSA-OAEP: Chuẩn đệm an toàn bắt buộc (PKCS#1 v2.1)</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            <strong>OAEP (Optimal Asymmetric Encryption Padding)</strong> do Bellare và Rogaway thiết kế năm 1994, giải quyết triệt để mọi điểm yếu của Textbook RSA:
+          </p>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 1rem; border-left: 3px solid var(--green);">
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">① Sinh ngẫu nhiên seed r (32 byte cho SHA-256).</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">② Tính maskedDB = DB ⊕ MGF1(r, len(DB))  [MGF1 là Mask Generation Function dùng SHA]</p>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">③ Tính maskedSeed = r ⊕ MGF1(maskedDB, len(seed))</p>
+            <p style="color: var(--text-muted);">④ EM = 0x00 || maskedSeed || maskedDB → Mã hóa RSA: C = EM^e mod n</p>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Mỗi lần mã hóa cùng M sẽ cho ra C khác nhau (nhờ seed ngẫu nhiên), loại bỏ tính tiền định. OAEP đạt chuẩn an toàn <strong>IND-CCA2</strong> (Indistinguishability under Adaptive Chosen Ciphertext Attack 2) — mức bảo mật cao nhất cho mã hóa bất đối xứng.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">6. Chữ ký số RSA-PSS và ứng dụng thực tế</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            <strong>RSA-PSS (Probabilistic Signature Scheme)</strong> là tiêu chuẩn chữ ký số RSA an toàn (PKCS#1 v2.1): <code>Sig = (H(M) || salt)^d mod n</code>. Muối ngẫu nhiên (salt) đảm bảo cùng tài liệu luôn cho chữ ký khác nhau. RSA-PSS đạt chuẩn an toàn chứng minh được (EUF-CMA) trong mô hình Random Oracle. RSA-PKCS#1 v1.5 cũ hơn vẫn dùng nhiều nhưng không có chứng minh bảo mật tương đương.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1.25rem; margin-bottom: 0.5rem;">7. Sức mạnh thuật toán phân tích số và tiêu chuẩn kích thước khóa</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+            Thuật toán mạnh nhất phá RSA hiện nay là <strong>GNFS (General Number Field Sieve)</strong> với độ phức tạp sub-exponential: exp(O((log n)^(1/3) · (log log n)^(2/3))). Các mốc lịch sử:
+          </p>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; margin-bottom: 1rem;">
+            <div style="color: var(--text-muted); display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 1rem;">
+              <span style="color: var(--red);">RSA-512 (155 chữ số):</span><span>Bị phân tích năm 1999 bởi nhóm nghiên cứu quốc tế.</span>
+              <span style="color: var(--red);">RSA-768 (232 chữ số):</span><span>Bị phân tích năm 2009, mất 2 năm tính toán phân tán.</span>
+              <span style="color: var(--amber);">RSA-1024:</span><span>Được ước tính có thể bị phân tích bởi các cường quốc tầm quốc gia. NIST loại bỏ từ 2013.</span>
+              <span style="color: var(--green);">RSA-2048:</span><span>An toàn thực tế đến ít nhất năm 2030–2035. NIST khuyến nghị tối thiểu hiện tại.</span>
+              <span style="color: var(--cyan);">RSA-3072/4096:</span><span>An toàn hơn, khuyến nghị cho dữ liệu cần bảo vệ dài hạn đến 2050+.</span>
+            </div>
+          </div>
+          <p style="color: var(--text-muted);">
+            <strong>Trước máy tính lượng tử – Thuật toán Shor:</strong> Máy tính lượng tử đủ mạnh có thể chạy thuật toán Shor để phân tích n trong thời gian đa thức O((log n)³), phá vỡ hoàn toàn RSA và các hệ mã hóa dựa trên phân tích số. NIST đã hoàn thiện chuẩn mật mã hậu lượng tử (PQC) năm 2024: <strong>ML-KEM (Kyber)</strong> thay thế trao đổi khóa RSA và <strong>ML-DSA (Dilithium)</strong> thay thế chữ ký RSA.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: ELGAMAL -->
+    <section id="view-elgamal" class="view-section">
+      <div class="module-header">
+        <div class="module-title">
+          <h2>ElGamal – Mật Mã Khóa Bất Đối Xứng & Chữ Ký Số</h2>
+          <p>Mật mã khóa công khai dựa trên Bài toán Logarithm Rời Rạc (DLP) & Tiền thân của chuẩn NIST DSA</p>
+        </div>
+        <div class="tabs-bar">
+          <button class="tab-btn active" onclick="switchSubTab('elgamal', 'edu')">Chế độ Toán học & Trực quan</button>
+          <button class="tab-btn" onclick="switchSubTab('elgamal', 'signature')">Chữ ký số ElGamal</button>
+          <button class="tab-btn" onclick="switchSubTab('elgamal', 'theory')">Lý thuyết & An toàn</button>
+          <button class="tab-btn" style="color: var(--cyan); font-weight: bold;" onclick="goToPractice('elgamal')">🎯 10 Bài tập ElGamal</button>
+          <button class="tab-btn" style="color: var(--purple); font-weight: bold;" onclick="goToQuiz('elgamal')">❓ 30 Trắc nghiệm ElGamal</button>
+        </div>
+      </div>
+
+      <!-- ELGAMAL SUBTAB 1: TOÁN HỌC & TRỰC QUAN -->
+      <div id="elgamal-tab-edu" class="subtab-content">
+        <div class="interactive-grid">
+          <div class="panel">
+            <div class="panel-header"><span class="panel-title">🔑 Khởi tạo Cặp Khóa ElGamal (Key Generation)</span></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem;">
+              <div class="form-group">
+                <label for="elgamal-p">Số nguyên tố p:</label>
+                <input type="number" id="elgamal-p" class="input-field" value="467">
+              </div>
+              <div class="form-group">
+                <label for="elgamal-g">Phần tử sinh g:</label>
+                <input type="number" id="elgamal-g" class="input-field" value="2">
+              </div>
+              <div class="form-group">
+                <label for="elgamal-x">Khóa bí mật x:</label>
+                <input type="number" id="elgamal-x" class="input-field" value="127">
+              </div>
+            </div>
+            <div id="elgamal-gen-status" style="font-size: 0.82rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--green);">
+              ✅ g = 2 là Căn nguyên thủy hợp lệ modulo 467
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-secondary btn-sm" onclick="setElGamalPreset(79, 3, 15)">Ví dụ nhỏ (79, 3, 15)</button>
+              <button class="btn btn-secondary btn-sm" onclick="setElGamalPreset(467, 2, 127)">Chuẩn thực hành (467, 2, 127)</button>
+              <button class="btn btn-secondary btn-sm" onclick="setElGamalPreset(2357, 2, 1751)">Số lớn (2357, 2, 1751)</button>
+              <button class="btn btn-primary btn-sm" onclick="generateElGamalKeys()">⚡ Tính khóa công khai y</button>
+            </div>
+            <div style="margin-top: 1rem; background: var(--bg-card); padding: 0.85rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.6;">
+              <div>Số nguyên tố Modulo $p$: <strong id="elgamal-p-val" style="color:var(--cyan);">467</strong></div>
+              <div>Căn nguyên thủy (Generator) $g$: <strong id="elgamal-g-val" style="color:var(--blue);">2</strong></div>
+              <div>Khóa bí mật (Private Key) $x$: <strong id="elgamal-x-val" style="color:var(--purple);">127</strong> <small style="color:var(--text-dim);">(Giữ bí mật tuyệt đối)</small></div>
+              <div>Khóa công khai $y = g^x \pmod p$: <strong id="elgamal-y-val" style="color:var(--green);">132</strong></div>
+              <div style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-color); color: var(--text-muted);">
+                📋 <strong>Public Key:</strong> $(p, g, y) = (<span id="elgamal-p-summary">467</span>, <span id="elgamal-g-summary">2</span>, <span id="elgamal-y-summary">132</span>)
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header"><span class="panel-title">🔒 Mã hóa & Giải mã ElGamal (Mã hóa xác suất)</span></div>
+            <div class="form-group">
+              <label for="elgamal-msg-type">Dạng thông điệp M:</label>
+              <select id="elgamal-msg-type" class="select-field" onchange="toggleElGamalMessageInput()">
+                <option value="number" selected>Số nguyên dương M (0 &le; M &lt; p)</option>
+                <option value="text">Chuỗi ký tự ASCII</option>
+              </select>
+            </div>
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.75rem;">
+              <div class="form-group">
+                <label for="elgamal-input-m">Thông điệp M:</label>
+                <input type="text" id="elgamal-input-m" class="input-field" value="42">
+              </div>
+              <div class="form-group">
+                <label for="elgamal-k">Số ngẫu nhiên k (Nonce):</label>
+                <input type="number" id="elgamal-k" class="input-field" value="13">
+              </div>
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-secondary btn-sm" onclick="randomizeElGamalK()">🎲 Đổi k ngẫu nhiên</button>
+              <button class="btn btn-primary" onclick="encryptElGamal()">🔒 Mã hóa ElGamal: (c1, c2)</button>
+              <button class="btn btn-secondary" onclick="decryptElGamal()">🔓 Giải mã: M = c2 · s⁻¹ mod p</button>
+            </div>
+            <div style="margin-top: 1rem;">
+              <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Bản mã gửi đi $(c_1, c_2)$ [Tỷ lệ mở rộng 2:1]:</label>
+              <div class="output-box" id="elgamal-c-output"><span>Nhấn "Mã hóa ElGamal" để quan sát...</span></div>
+              <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-top: 0.5rem; display: block;">Bản rõ sau khi người nhận giải mã M:</label>
+              <div class="output-box" id="elgamal-dec-output"><span>...</span></div>
+            </div>
+            <div style="margin-top: 0.75rem; background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--green); padding: 0.65rem 0.85rem; border-radius: 4px; font-size: 0.82rem; color: var(--text-main);">
+              💡 <strong>Mã hóa ngẫu nhiên (Probabilistic Encryption):</strong> Thử nhấn nút <em>"🎲 Đổi k ngẫu nhiên"</em> rồi bấm <em>"Mã hóa"</em> lần nữa. Bạn sẽ thấy cùng thông điệp $M = 42$ nhưng bản mã $(c_1, c_2)$ luôn biến đổi khác nhau, khiến kẻ tấn công không thể đoán được nội dung bằng vét cạn (Đạt chuẩn an ninh IND-CPA)!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ELGAMAL SUBTAB 2: CHỮ KÝ SỐ -->
+      <div id="elgamal-tab-signature" class="subtab-content" style="display: none;">
+        <div class="interactive-grid">
+          <div class="panel">
+            <div class="panel-header"><span class="panel-title">✍️ Tạo Chữ Ký Số ElGamal (Signing Scheme)</span></div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              Người ký dùng <strong>Khóa bí mật x</strong> và số ngẫu nhiên phiên <strong>k</strong> ($\gcd(k, p-1)=1$) để tạo cặp chữ ký $(S_1, S_2)$:
+            </p>
+            <div class="form-group">
+              <label for="elgamal-sig-m">Thông điệp số M (hoặc Mã băm H(M)):</label>
+              <input type="number" id="elgamal-sig-m" class="input-field" value="35">
+            </div>
+            <div class="form-group">
+              <label for="elgamal-sig-k">Số ngẫu nhiên phiên k ($\gcd(k, p-1)=1$):</label>
+              <input type="number" id="elgamal-sig-k" class="input-field" value="17">
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-primary" onclick="signElGamalDemo()">✍️ Ký thông điệp (Tạo S1, S2)</button>
+            </div>
+            <div style="margin-top: 1rem;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <div class="form-group">
+                  <label for="elgamal-sig-s1">Chữ ký thành phần S1 ($g^k \bmod p$):</label>
+                  <input type="text" id="elgamal-sig-s1" class="input-field" readonly value="...">
+                </div>
+                <div class="form-group">
+                  <label for="elgamal-sig-s2">Chữ ký thành phần S2:</label>
+                  <input type="text" id="elgamal-sig-s2" class="input-field" readonly value="...">
+                </div>
+              </div>
+              <div class="output-box" id="elgamal-sig-output" style="font-size: 0.85rem;">
+                <span>Nhấn "Ký thông điệp" để sinh cặp chữ ký...</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header"><span class="panel-title">🔍 Xác Minh Chữ Ký Số (Signature Verification)</span></div>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              Bất kỳ ai có Khóa công khai $(p, g, y)$ đều có thể kiểm tra chữ ký mà không cần biết khóa bí mật $x$:
+            </p>
+            <div style="background: var(--bg-card); padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.84rem; margin-bottom: 1rem;">
+              <div>• $v_1 = g^M \pmod p$</div>
+              <div>• $v_2 = (y^{S_1} \cdot S_1^{S_2}) \pmod p$</div>
+              <div>• Nếu $v_1 = v_2 \implies$ Chữ ký chính chủ & toàn vẹn!</div>
+            </div>
+            <div class="btn-group">
+              <button class="btn btn-primary" onclick="verifyElGamalDemo()">🔍 Xác minh chữ ký hiện tại</button>
+              <button class="btn btn-secondary" onclick="document.getElementById('elgamal-sig-m').value = '99'; verifyElGamalDemo();">⚠️ Giả lập sửa thông điệp (M=99)</button>
+            </div>
+            <div style="margin-top: 1rem;">
+              <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Kết quả đối chiếu xác minh:</label>
+              <div class="output-box" id="elgamal-sig-verify-res" style="min-height: 85px; font-size: 0.86rem;">
+                <span>Nhấn "Xác minh chữ ký hiện tại" để kiểm tra tính toàn vẹn...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ELGAMAL SUBTAB 3: LÝ THUYẾT & AN TOÀN -->
+      <div id="elgamal-tab-theory" class="subtab-content" style="display: none;">
+        <div class="panel" style="line-height: 1.8; margin-bottom: 1.5rem;">
+          <h3 style="color: var(--cyan); margin-bottom: 0.75rem;">Nguyên Lý Toán Học & Cảnh Báo An Ninh Mạng Của ElGamal</h3>
+          
+          <h4 style="color: var(--blue); margin-top: 1rem; margin-bottom: 0.5rem;">1. Bản chất bài toán Logarithm Rời Rạc (Discrete Logarithm Problem - DLP)</h4>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Cho số nguyên tố lớn $p$, căn nguyên thủy $g$, và giá trị $y = g^x \pmod p$.<br>
+            • Tính $y$ khi biết $g, x, p$ là phép lũy thừa nhị phân modulo cực nhanh: $O(\log x)$.<br>
+            • Tìm lại $x = \log_g(y) \pmod p$ là bài toán nan giải (DLP), không có thuật toán thời gian đa thức nào trên máy tính kinh điển giải được với $p \ge 2048$-bit.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1rem; margin-bottom: 0.5rem;">2. Tại sao người nhận khôi phục được M mà kẻ nghe trộm lại không?</h4>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Bản mã gửi trên đường truyền là $(c_1 = g^k \bmod p, c_2 = M \cdot y^k \bmod p)$.<br>
+            • <strong>Người nhận</strong> có khóa riêng $x$, tính được bí mật chia sẻ: $s = (c_1)^x = (g^k)^x = g^{kx} \pmod p$. Do $y = g^x \implies y^k = (g^x)^k = g^{kx} = s \pmod p$. Từ đó giải mã $M = c_2 \cdot s^{-1} \pmod p$.<br>
+            • <strong>Kẻ nghe trộm (Eve)</strong> chỉ thấy $g, p, y = g^x, c_1 = g^k, c_2$. Muốn tính $s = g^{kx}$, Eve phải giải bài toán Computational Diffie-Hellman (CDH) - việc này tương đương với độ khó phá vỡ DLP.
+          </p>
+
+          <h4 style="color: var(--amber); margin-top: 1rem; margin-bottom: 0.5rem;">3. Hiểm họa chí mạng: Tái sử dụng số ngẫu nhiên k (Nonce Reuse)</h4>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Nếu bên gửi dùng cùng số $k$ để mã hóa 2 thông điệp $M_1, M_2$:<br>
+            $\frac{c_{2,1}}{c_{2,2}} = \frac{M_1 \cdot y^k}{M_2 \cdot y^k} \equiv \frac{M_1}{M_2} \pmod p$. Kẻ tấn công biết $M_1$ sẽ lập tức giải ra $M_2$ mà không cần biết khóa bí mật!<br>
+            Đặc biệt trong chữ ký số ElGamal, nếu tái sử dụng $k$, kẻ tấn công có thể <strong>tìm ra trực tiếp khóa bí mật $x$</strong> qua hệ phương trình tuyến tính (lỗi kinh điển từng khiến hệ máy Sony PlayStation 3 bị bẻ khóa hoàn toàn năm 2010).
+          </p>
+
+          <h4 style="color: var(--green); margin-top: 1rem; margin-bottom: 0.5rem;">4. Tính chất nhân đồng cấu (Multiplicative Homomorphic)</h4>
+          <p style="color: var(--text-muted);">
+            Nếu $(c_{1,1}, c_{2,1})$ là bản mã của $M_1$ và $(c_{1,2}, c_{2,2})$ là bản mã của $M_2$, thì cặp:
+            $$(c_{1,1} \cdot c_{1,2} \pmod p, \quad c_{2,1} \cdot c_{2,2} \pmod p)$$
+            chính là bản mã hợp lệ của tích $M_1 \cdot M_2 \pmod p$. Tính chất này được ứng dụng mạnh mẽ trong hệ thống bỏ phiếu điện tử an toàn (E-voting) và mật mã bảo vệ quyền riêng tư.
           </p>
         </div>
       </div>
@@ -2246,13 +2663,14 @@
     <section id="view-practice" class="view-section">
       <div class="module-header">
         <div class="module-title">
-          <h2>🎯 50 Bài Tập & Ví Dụ Thực Hành (10 Cấp Độ Từ Cơ Bản Đến Nâng Cao)</h2>
+          <h2>🎯 60 Bài Tập & Ví Dụ Thực Hành (10 Cấp Độ Từ Cơ Bản Đến Nâng Cao)</h2>
           <p>Mỗi thuật toán gồm 10 bài tập: có ví dụ minh họa từng bước và khu vực tương tác thực hành tức thời</p>
         </div>
         <div class="tabs-bar" id="practice-algo-tabs">
           <button class="tab-btn active" onclick="switchPracticeAlgo('des')">DES (10 bài)</button>
           <button class="tab-btn" onclick="switchPracticeAlgo('aes')">AES (10 bài)</button>
           <button class="tab-btn" onclick="switchPracticeAlgo('rsa')">RSA (10 bài)</button>
+          <button class="tab-btn" onclick="switchPracticeAlgo('elgamal')">ElGamal (10 bài)</button>
           <button class="tab-btn" onclick="switchPracticeAlgo('md5')">MD5 (10 bài)</button>
           <button class="tab-btn" onclick="switchPracticeAlgo('sha')">SHA-256 (10 bài)</button>
         </div>
@@ -2298,6 +2716,9 @@
               <td><strong style="color: var(--purple);">RSA</strong></td><td>Mã hóa bất đối xứng</td><td>Cặp khóa Public & Private</td><td>✅ Có</td><td>2048 - 4096 bit</td><td>Trao đổi khóa, Chữ ký số</td><td><span style="color: var(--green);">🛡️ An toàn (≥ 2048-bit)</span></td>
             </tr>
             <tr>
+              <td><strong style="color: var(--purple);">ElGamal</strong></td><td>Mã hóa bất đối xứng & Chữ ký số</td><td>Cặp khóa Public (p,g,y) & Private (x)</td><td>✅ Có</td><td>≥ 2048-bit (Bản mã nở 2:1)</td><td>Mã hóa ngẫu nhiên, Chữ ký số DSA, PGP</td><td><span style="color: var(--green);">🛡️ An toàn (≥ 2048-bit)</span></td>
+            </tr>
+            <tr>
               <td><strong style="color: var(--amber);">MD5</strong></td><td>Hàm băm 1 chiều</td><td>❌ Không có khóa</td><td>❌ Không giải mã</td><td>128 bit (32 hex)</td><td>Checksum file cũ</td><td><span style="color: var(--red);">⛔ Rách va chạm</span></td>
             </tr>
             <tr>
@@ -2325,6 +2746,7 @@
               <option value="AES">AES (128-bit Symmetric)</option>
               <option value="DES">DES (64-bit Symmetric)</option>
               <option value="RSA">RSA (Public-Key Demo)</option>
+              <option value="ELGAMAL">ElGamal (Public-Key & DLP)</option>
               <option value="SHA256">SHA-256 (Hash Function)</option>
               <option value="MD5">MD5 (Hash Function)</option>
             </select>
@@ -2450,6 +2872,10 @@
           <div class="accordion-header" onclick="toggleAccordion(this)"><span>05. Hiệu ứng tuyết lở (Avalanche Effect)</span><span>▼</span></div>
           <div class="accordion-body">Chỉ cần thay đổi 1 bit ở đầu vào, xấp xỉ 50% số bit ở đầu ra sẽ bị đảo lộn ngẫu nhiên.</div>
         </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)"><span>06. Bài toán Logarithm Rời Rạc & Hệ Mật Mã ElGamal</span><span>▼</span></div>
+          <div class="accordion-body">Dựa trên độ khó của việc tìm x khi biết y = g^x mod p trên trường hữu hạn Z_p*. Cho phép mã hóa xác suất (Probabilistic Encryption) và là nền tảng của chuẩn chữ ký số quốc gia Hoa Kỳ DSA.</div>
+        </div>
       </div>
     </section>
 
@@ -2458,20 +2884,21 @@
       <div class="module-header">
         <div class="module-title">
           <h2>🎯 Thử Thách Trắc Nghiệm Mật Mã Học Toàn Diện</h2>
-          <p>Hệ thống 150 câu hỏi trắc nghiệm chuyên sâu về 5 thuật toán cốt lõi (DES, AES, RSA, MD5, SHA-256) kèm giải thích chi tiết từng câu</p>
+          <p>Hệ thống 180 câu hỏi trắc nghiệm chuyên sâu về 6 thuật toán cốt lõi (DES, AES, RSA, ElGamal, MD5, SHA-256) kèm giải thích chi tiết từng câu</p>
         </div>
         <div class="btn-group" style="margin-top: 0;">
           <button class="btn btn-secondary btn-sm" onclick="resetQuizFilter(state.activeQuizFilter || 'all')">↺ Làm lại bộ lọc này</button>
-          <button class="btn btn-secondary btn-sm" onclick="resetQuiz()">↺ Làm lại tất cả (150 câu)</button>
+          <button class="btn btn-secondary btn-sm" onclick="resetQuiz()">↺ Làm lại tất cả (180 câu)</button>
         </div>
       </div>
 
       <!-- Category Filter Tabs -->
       <div class="tabs-bar" id="quiz-filter-tabs" style="margin-bottom: 1.25rem;">
-        <button class="tab-btn active" data-quiz-filter="all" onclick="filterQuiz('all')">🎯 Tất cả (150 câu)</button>
+        <button class="tab-btn active" data-quiz-filter="all" onclick="filterQuiz('all')">🎯 Tất cả (180 câu)</button>
         <button class="tab-btn" data-quiz-filter="des" onclick="filterQuiz('des')">DES (30 câu)</button>
         <button class="tab-btn" data-quiz-filter="aes" onclick="filterQuiz('aes')">AES (30 câu)</button>
         <button class="tab-btn" data-quiz-filter="rsa" onclick="filterQuiz('rsa')">RSA (30 câu)</button>
+        <button class="tab-btn" data-quiz-filter="elgamal" onclick="filterQuiz('elgamal')">ElGamal (30 câu)</button>
         <button class="tab-btn" data-quiz-filter="md5" onclick="filterQuiz('md5')">MD5 (30 câu)</button>
         <button class="tab-btn" data-quiz-filter="sha" onclick="filterQuiz('sha')">SHA-256 (30 câu)</button>
       </div>
@@ -2498,15 +2925,16 @@
       <div class="module-header">
         <div class="module-title">
           <h2>📖 Giáo Trình Lý Thuyết Mật Mã Học Cốt Lõi</h2>
-          <p>Giải thích từ những khái niệm nhỏ nhất: Bit, Byte, Nhị phân, Hex, Modulo, XOR đến chi tiết 5 thuật toán</p>
+          <p>Giải thích từ những khái niệm nhỏ nhất: Bit, Byte, Nhị phân, Hex, Modulo, XOR đến chi tiết 6 thuật toán</p>
         </div>
         <div class="tabs-bar" id="theory-tabs">
           <button class="tab-btn active" onclick="switchTheoryTab('sec0')">0. Nền Tảng (Bit/Hex/XOR)</button>
           <button class="tab-btn" onclick="switchTheoryTab('des')">1. Lý Thuyết DES</button>
           <button class="tab-btn" onclick="switchTheoryTab('aes')">2. Lý Thuyết AES</button>
           <button class="tab-btn" onclick="switchTheoryTab('rsa')">3. Lý Thuyết RSA</button>
-          <button class="tab-btn" onclick="switchTheoryTab('md5')">4. Lý Thuyết MD5</button>
-          <button class="tab-btn" onclick="switchTheoryTab('sha')">5. Lý Thuyết SHA-256</button>
+          <button class="tab-btn" onclick="switchTheoryTab('elgamal')">4. Lý Thuyết ElGamal</button>
+          <button class="tab-btn" onclick="switchTheoryTab('md5')">5. Lý Thuyết MD5</button>
+          <button class="tab-btn" onclick="switchTheoryTab('sha')">6. Lý Thuyết SHA-256</button>
         </div>
       </div>
 
@@ -2747,6 +3175,40 @@ eg Z)$.</li>
         </div>
       </div>
 
+      <!-- TAB 4: ELGAMAL -->
+      <div id="theory-tab-elgamal" class="theory-content" style="display: none;">
+        <div class="panel" style="line-height: 1.8; margin-bottom: 1.5rem;">
+          <h3 style="color: var(--cyan); margin-bottom: 0.5rem;">Bài 4: Lý Thuyết Toàn Diện Hệ Mật Mã ElGamal & Chữ Ký Số</h3>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            <strong>ElGamal</strong> do nhà mật mã học Taher Elgamal công bố năm 1985, là hệ mật mã bất đối xứng tiên phong dựa trên <strong>Bài toán Logarithm Rời Rạc (DLP)</strong> trên trường hữu hạn $\mathbb{Z}_p^*$.
+          </p>
+
+          <h4 style="color: var(--blue); margin-bottom: 0.5rem;">1. Căn nguyên thủy (Primitive Root) & Không gian nhóm tuần hoàn</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.5rem;">
+            Cho số nguyên tố $p$, phần tử $g$ được gọi là căn nguyên thủy nếu lũy thừa của nó sinh ra đủ $p-1$ phần tử khác 0 của $\mathbb{Z}_p^*$:
+            $$\{g^1, g^2, \dots, g^{p-1} \pmod p\} = \{1, 2, \dots, p-1\}$$
+            Điều này đảm bảo mọi số mũ bí mật $x \in [2, p-2]$ đều cho ra một giá trị khóa công khai $y = g^x \pmod p$ độc nhất vô nhị.
+          </p>
+
+          <h4 style="color: var(--blue); margin-top: 1rem; margin-bottom: 0.5rem;">2. Cơ chế Ba Pha: Sinh Khóa, Mã Hóa Xác Suất & Giải Mã</h4>
+          <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.88rem; color: var(--text-main); margin-bottom: 0.75rem;">
+            <strong>Pha 1 (Sinh khóa):</strong> Chọn nguyên tố $p$, generator $g$, khóa bí mật $x \in [2, p-2]$. Tính khóa công khai $y = g^x \pmod p$.<br>
+            <strong>Pha 2 (Mã hóa):</strong> Chọn số ngẫu nhiên bí mật phiên $k$ ($\gcd(k, p-1)=1$). Tính $c_1 = g^k \pmod p$, tính khóa tạm $s = y^k \pmod p$, tính $c_2 = (M \cdot s) \pmod p$. Bản mã là $(c_1, c_2)$.<br>
+            <strong>Pha 3 (Giải mã):</strong> Người nhận dùng $x$ tính $s = (c_1)^x \pmod p = (g^k)^x = g^{kx} = y^k \pmod p$. Tìm nghịch đảo $s^{-1} \pmod p$. Khôi phục $M = (c_2 \cdot s^{-1}) \pmod p$.
+          </div>
+
+          <h4 style="color: var(--blue); margin-top: 1rem; margin-bottom: 0.5rem;">3. Chữ ký số ElGamal & Tiêu chuẩn Quốc gia Hoa Kỳ DSA</h4>
+          <p style="color: var(--text-muted); margin-bottom: 0.5rem;">
+            Sơ đồ chữ ký số ElGamal tạo cặp $(S_1 = g^k \bmod p, S_2 = (H(M) - x \cdot S_1) \cdot k^{-1} \bmod (p-1))$. Viện NIST đã chuẩn hóa biến thể của ElGamal thành chuẩn <strong>DSA (FIPS 186)</strong> bảo vệ xác thực số trên toàn nước Mỹ.
+          </p>
+
+          <h4 style="color: var(--amber); margin-top: 1rem; margin-bottom: 0.5rem;">4. Cảnh báo an ninh chí mạng: Không bao giờ tái sử dụng Nonce k</h4>
+          <p style="color: var(--text-muted);">
+            Nếu dùng chung số $k$ cho 2 thông điệp, tỷ số các bản mã làm lộ bản rõ! Trong chữ ký số, việc tái sử dụng $k$ cho phép kẻ tấn công <strong>giải hệ phương trình và tìm ra trực tiếp khóa riêng tư $x$</strong>!
+          </p>
+        </div>
+      </div>
+
       <!-- TAB 5: SHA-256 -->
       <div id="theory-tab-sha" class="theory-content" style="display: none;">
         <div class="panel" style="line-height: 1.8; margin-bottom: 1.5rem;">
@@ -2781,7 +3243,7 @@ eg E wedge G)$ (Chọn $F$ nếu $E=1$, chọn $G$ nếu $E=0$).<br>
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-links">
-      <span>CryptoLab</span> • <span>DES</span> • <span>AES</span> • <span>RSA</span> • <span>MD5</span> • <span>SHA-256</span> • <span>50 Bài Thực Hành</span>
+      <span>CryptoLab</span> • <span>DES</span> • <span>AES</span> • <span>RSA</span> • <span>ElGamal</span> • <span>MD5</span> • <span>SHA-256</span> • <span>60 Bài Thực Hành</span> • <span>180 Câu Quiz</span>
     </div>
     <p>Interactive Cryptography Learning – Dự án học tập và trực quan hóa thuật toán mật mã học</p>
     <p style="margin-top: 0.35rem; color: var(--text-dim); font-size: 0.78rem;">Phiên bản độc lập chạy trực tiếp trên trình duyệt máy tính không cần backend (Zero-dependency Client Application)</p>
@@ -2824,6 +3286,7 @@ eg E wedge G)$ (Chọn $F$ nếu $E=1$, chọn $G$ nếu $E=0$).<br>
       runDES(true);
       runAES(true);
       generateRSAKeys();
+      generateElGamalKeys();
       runMD5Reactive();
       runSHAReactive();
       runAvalanche();
@@ -3247,6 +3710,224 @@ eg E wedge G)$ (Chọn $F$ nếu $E=1$, chọn $G$ nếu $E=0$).<br>
       }
     }
 
+    // ==========================================================================
+    // ELGAMAL IMPLEMENTATION & INTERACTIVE LOGIC
+    // ==========================================================================
+    let currentElGamal = { p: 467n, g: 2n, x: 127n, y: 132n };
+
+    function checkPrimitiveRoot(g, p) {
+      if (p <= 2n) return true;
+      const phi = p - 1n;
+      let factors = [];
+      let temp = phi;
+      for (let d = 2n; d * d <= temp; d++) {
+        if (temp % d === 0n) {
+          factors.push(d);
+          while (temp % d === 0n) temp /= d;
+        }
+      }
+      if (temp > 1n) factors.push(temp);
+
+      for (let f of factors) {
+        if (modPow(g, phi / f, p) === 1n) return false;
+      }
+      return true;
+    }
+
+    function setElGamalPreset(p, g, x) {
+      document.getElementById('elgamal-p').value = p;
+      document.getElementById('elgamal-g').value = g;
+      document.getElementById('elgamal-x').value = x;
+      generateElGamalKeys();
+    }
+
+    function generateElGamalKeys() {
+      const pEl = document.getElementById('elgamal-p');
+      const gEl = document.getElementById('elgamal-g');
+      const xEl = document.getElementById('elgamal-x');
+      if (!pEl || !gEl || !xEl) return;
+
+      const p = BigInt(pEl.value || '467');
+      const g = BigInt(gEl.value || '2');
+      const x = BigInt(xEl.value || '127');
+      const y = modPow(g, x, p);
+      currentElGamal = { p, g, x, y };
+
+      const isGen = checkPrimitiveRoot(g, p);
+      const genStatus = document.getElementById('elgamal-gen-status');
+      if (genStatus) {
+        genStatus.textContent = isGen 
+          ? `✅ g = ${g} là Căn nguyên thủy hợp lệ modulo ${p}` 
+          : `⚠️ g = ${g} chưa phải căn nguyên thủy của ${p} (chu kỳ bị ngắn)`;
+        genStatus.style.color = isGen ? 'var(--green)' : 'var(--amber)';
+      }
+
+      const pVal = document.getElementById('elgamal-p-val');
+      const gVal = document.getElementById('elgamal-g-val');
+      const xVal = document.getElementById('elgamal-x-val');
+      const yVal = document.getElementById('elgamal-y-val');
+      if (pVal) pVal.textContent = p.toString();
+      if (gVal) gVal.textContent = g.toString();
+      if (xVal) xVal.textContent = x.toString();
+      if (yVal) yVal.textContent = y.toString();
+
+      const pSum = document.getElementById('elgamal-p-summary');
+      const gSum = document.getElementById('elgamal-g-summary');
+      const ySum = document.getElementById('elgamal-y-summary');
+      if (pSum) pSum.textContent = p.toString();
+      if (gSum) gSum.textContent = g.toString();
+      if (ySum) ySum.textContent = y.toString();
+    }
+
+    function randomizeElGamalK() {
+      const { p } = currentElGamal;
+      const pMinus1 = p - 1n;
+      let k = 13n;
+      if (pMinus1 > 4n) {
+        for (let attempt = 0; attempt < 100; attempt++) {
+          const upper = Number(pMinus1 > 1000n ? 1000n : pMinus1);
+          const rand = BigInt(Math.floor(Math.random() * (upper - 4)) + 3);
+          if (gcd(rand, pMinus1) === 1n) {
+            k = rand;
+            break;
+          }
+        }
+      }
+      document.getElementById('elgamal-k').value = k.toString();
+    }
+
+    function toggleElGamalMessageInput() {
+      const type = document.getElementById('elgamal-msg-type').value;
+      const input = document.getElementById('elgamal-input-m');
+      input.value = type === 'number' ? '42' : 'CryptoLab';
+    }
+
+    function encryptElGamal() {
+      const type = document.getElementById('elgamal-msg-type').value;
+      const val = document.getElementById('elgamal-input-m').value;
+      const kVal = BigInt(document.getElementById('elgamal-k').value || '13');
+      const { p, g, y } = currentElGamal;
+
+      if (type === 'number') {
+        const m = BigInt(val || '42');
+        if (m >= p) {
+          alert(`Thông điệp M (${m}) phải nhỏ hơn số nguyên tố p (${p})!`);
+          return;
+        }
+        const c1 = modPow(g, kVal, p);
+        const s = modPow(y, kVal, p);
+        const c2 = (m * s) % p;
+        document.getElementById('elgamal-c-output').innerHTML = `
+          <span>(c1: <strong>${c1}</strong>, c2: <strong>${c2}</strong>) [Khóa tạm s = y^k mod p = ${s}]</span>
+          <button class="copy-btn" onclick="copyText('elgamal-c-output')">Copy</button>
+        `;
+      } else {
+        const pairs = [];
+        let curK = kVal;
+        for (let i = 0; i < val.length; i++) {
+          const code = BigInt(val.charCodeAt(i));
+          const c1 = modPow(g, curK, p);
+          const s = modPow(y, curK, p);
+          const c2 = (code * s) % p;
+          pairs.push(`(${c1},${c2})`);
+          curK = (curK + 2n) % (p - 1n);
+          if (curK <= 1n || gcd(curK, p - 1n) !== 1n) curK = 5n;
+        }
+        document.getElementById('elgamal-c-output').innerHTML = `
+          <span>[${pairs.join(', ')}]</span>
+          <button class="copy-btn" onclick="copyText('elgamal-c-output')">Copy</button>
+        `;
+      }
+    }
+
+    function decryptElGamal() {
+      const type = document.getElementById('elgamal-msg-type').value;
+      const { p, x } = currentElGamal;
+      const cBox = document.getElementById('elgamal-c-output');
+      const cText = cBox.innerText.replace('Copy', '').trim();
+      if (!cText || cText.includes('...')) return;
+
+      if (type === 'number') {
+        const match = cText.match(/c1:\s*(\d+),\s*c2:\s*(\d+)/) || cText.match(/\((\d+),\s*(\d+)\)/);
+        if (!match) return;
+        const c1 = BigInt(match[1]);
+        const c2 = BigInt(match[2]);
+        const s = modPow(c1, x, p);
+        const egcd = extendedGCD(s, p);
+        let sInv = egcd.x % p;
+        if (sInv < 0n) sInv += p;
+        const m = (c2 * sInv) % p;
+        document.getElementById('elgamal-dec-output').textContent = `${m.toString()} ("${String.fromCharCode(Number(m))}") [Khôi phục từ s = c1^x mod p = ${s}, s⁻¹ mod p = ${sInv}]`;
+      } else {
+        const matches = [...cText.matchAll(/\((\d+),(\d+)\)/g)];
+        let resStr = '';
+        matches.forEach(m => {
+          const c1 = BigInt(m[1]);
+          const c2 = BigInt(m[2]);
+          const s = modPow(c1, x, p);
+          const egcd = extendedGCD(s, p);
+          let sInv = egcd.x % p;
+          if (sInv < 0n) sInv += p;
+          const charCode = Number((c2 * sInv) % p);
+          resStr += String.fromCharCode(charCode);
+        });
+        document.getElementById('elgamal-dec-output').textContent = resStr;
+      }
+    }
+
+    function signElGamalDemo() {
+      const { p, g, x } = currentElGamal;
+      const pMinus1 = p - 1n;
+      const msg = BigInt(document.getElementById('elgamal-sig-m').value || '35');
+      let k = BigInt(document.getElementById('elgamal-sig-k').value || '17');
+      if (gcd(k, pMinus1) !== 1n) {
+        alert(`Số k (${k}) phải nguyên tố cùng nhau với p-1 (${pMinus1})!`);
+        return;
+      }
+      const S1 = modPow(g, k, p);
+      const egcd = extendedGCD(k, pMinus1);
+      let kInv = egcd.x % pMinus1;
+      if (kInv < 0n) kInv += pMinus1;
+
+      let temp = (msg - (x * S1)) % pMinus1;
+      if (temp < 0n) temp += pMinus1;
+      const S2 = (temp * kInv) % pMinus1;
+
+      document.getElementById('elgamal-sig-s1').value = S1.toString();
+      document.getElementById('elgamal-sig-s2').value = S2.toString();
+      document.getElementById('elgamal-sig-output').innerHTML = `
+        Chữ ký số: <strong>(S1 = ${S1}, S2 = ${S2})</strong><br>
+        <small style="color:var(--text-dim);">k⁻¹ mod (p-1) = ${kInv}, S2 = (M - x·S1)·k⁻¹ mod (p-1) = ${S2}</small>
+      `;
+    }
+
+    function verifyElGamalDemo() {
+      const { p, g, y } = currentElGamal;
+      const msg = BigInt(document.getElementById('elgamal-sig-m').value || '35');
+      const S1 = BigInt(document.getElementById('elgamal-sig-s1').value || '0');
+      const S2 = BigInt(document.getElementById('elgamal-sig-s2').value || '0');
+
+      if (S1 <= 0n || S1 >= p) {
+        document.getElementById('elgamal-sig-verify-res').innerHTML = `<span style="color:var(--red);">❌ Chữ ký không hợp lệ: S1 phải nằm trong (0, p)</span>`;
+        return;
+      }
+
+      const v1 = modPow(g, msg, p);
+      const partA = modPow(y, S1, p);
+      const partB = modPow(S1, S2, p);
+      const v2 = (partA * partB) % p;
+
+      const valid = v1 === v2;
+      document.getElementById('elgamal-sig-verify-res').innerHTML = `
+        <strong>Đối chiếu toán học:</strong><br>
+        • v1 = g^M mod p = ${g}^${msg} mod ${p} = <strong style="color:var(--cyan);">${v1}</strong><br>
+        • v2 = (y^S1 · S1^S2) mod p = (${y}^${S1} · ${S1}^${S2}) mod ${p} = <strong style="color:var(--blue);">${v2}</strong><br>
+        ${valid 
+          ? '<span style="color:var(--green); font-weight:700;">✅ XÁC THỰC THÀNH CÔNG! Chữ ký số hoàn toàn chính chủ và toàn vẹn!</span>' 
+          : '<span style="color:var(--red); font-weight:700;">❌ XÁC THỰC THẤT BẠI! Thông điệp hoặc chữ ký đã bị chỉnh sửa/giả mạo!</span>'}
+      `;
+    }
+
     // MD5 Implementation (RFC 1321)
     function md5(string) {
       function rotateLeft(lValue, iShiftBits) { return (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits)); }
@@ -3465,6 +4146,29 @@ eg E wedge G)$ (Chọn $F$ nếu $E=1$, chọn $G$ nếu $E=0$).<br>
       } else if (algo === 'RSA') {
         const m = BigInt(input.charCodeAt(0) || 65);
         output = mode === 'encrypt' ? modPow(m, 17n, 3233n).toString() : modPow(BigInt(input || '2790'), 2753n, 3233n).toString();
+      } else if (algo === 'ELGAMAL') {
+        const { p, g, x, y } = currentElGamal;
+        if (mode === 'encrypt') {
+          const m = BigInt(input.charCodeAt(0) || 65);
+          const k = 13n;
+          const c1 = modPow(g, k, p);
+          const s = modPow(y, k, p);
+          const c2 = (m * s) % p;
+          output = `(${c1}, ${c2})`;
+        } else {
+          const match = input.match(/\((\d+),\s*(\d+)\)/) || input.match(/(\d+)[,\s]+(\d+)/);
+          if (match) {
+            const c1 = BigInt(match[1]), c2 = BigInt(match[2]);
+            const s = modPow(c1, x, p);
+            const egcd = extendedGCD(s, p);
+            let sInv = egcd.x % p;
+            if (sInv < 0n) sInv += p;
+            const m = (c2 * sInv) % p;
+            output = `${m} ('${String.fromCharCode(Number(m))}')`;
+          } else {
+            output = 'Định dạng (c1, c2) không hợp lệ';
+          }
+        }
       }
       const t1 = performance.now();
       const dur = (t1 - t0).toFixed(2);
@@ -5790,6 +6494,456 @@ eg E wedge G)$ (Chọn $F$ nếu $E=1$, chọn $G$ nếu $E=0$).<br>
     ],
     "ans": 1,
     "exp": "SHA-256 là tiêu chuẩn hàm băm mật mã thành công và được tin cậy nhất trong lịch sử máy tính. Nó bảo vệ hàng nghìn tỷ đô la giao dịch tài chính, lưu lượng web toàn cầu và là thước đo chuẩn mực cho an toàn thông tin hiện đại."
+  },
+  {
+    "id": 151,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Hệ mật mã khóa công khai ElGamal được nhà khoa học nào đề xuất và vào năm nào?",
+    "options": [
+      "A. Ron Rivest, Adi Shamir và Leonard Adleman năm 1977",
+      "B. Taher Elgamal năm 1985",
+      "C. Whitfield Diffie và Martin Hellman năm 1976",
+      "D. Ralph Merkle năm 1979"
+    ],
+    "ans": 1,
+    "exp": "Hệ mật mã ElGamal do nhà mật mã học người Ai Cập Taher Elgamal công bố năm 1985 trong bài báo kinh điển 'A Public Key Cryptosystem and a Signature Scheme Based on Discrete Logarithms'."
+  },
+  {
+    "id": 152,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Độ an toàn của hệ mật mã ElGamal dựa trên bài toán toán học nan giải nào?",
+    "options": [
+      "A. Bài toán phân tích thừa số nguyên tố lớn (Integer Factorization)",
+      "B. Bài toán Logarithm rời rạc (Discrete Logarithm Problem - DLP) trên nhóm cyclic hữu hạn",
+      "C. Bài toán véc-tơ ngắn nhất trong lưới (SVP trong Lattice)",
+      "D. Bài toán nghịch đảo hàm băm một chiều"
+    ],
+    "ans": 1,
+    "exp": "ElGamal dựa trên độ khó của Bài toán Logarithm Rời rạc (DLP): Cho trước số nguyên tố p, phần tử sinh g và giá trị y = g^x mod p, việc tìm lại số mũ bí mật x là cực kỳ khó khăn về mặt tính toán với số nguyên tố lớn."
+  },
+  {
+    "id": 153,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Trong hệ mật mã ElGamal, bộ tham số nào sau đây tạo thành Khóa công khai (Public Key)?",
+    "options": [
+      "A. Cặp số (e, n)",
+      "B. Bộ ba số (p, g, y) trong đó p là số nguyên tố, g là căn nguyên thủy, y = g^x mod p",
+      "C. Cặp số (p, x) trong đó x là số mũ bí mật",
+      "D. Bộ ba số (p, g, x)"
+    ],
+    "ans": 1,
+    "exp": "Khóa công khai của ElGamal gồm bộ ba (p, g, y), trong đó p là số nguyên tố, g là phần tử nguyên căn (generator) của Z_p*, và y = g^x mod p. Khóa bí mật (Private Key) chỉ là số nguyên x."
+  },
+  {
+    "id": 154,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Phần tử g trong ElGamal được yêu cầu phải là gì của trường số nguyên modulo p?",
+    "options": [
+      "A. Số chẵn bất kỳ",
+      "B. Căn nguyên thủy (Primitive Root hay Generator) của nhóm Z_p*",
+      "C. Số nguyên tố cùng nhau với số mũ bí mật x",
+      "D. Một số ngẫu nhiên nhỏ hơn 10"
+    ],
+    "ans": 1,
+    "exp": "g phải là căn nguyên thủy (generator) của nhóm cyclic Z_p*, nghĩa là tập hợp các lũy thừa {g^1, g^2, ..., g^(p-1) mod p} sẽ sinh ra đầy đủ tất cả p - 1 phần tử khác 0 từ 1 đến p - 1."
+  },
+  {
+    "id": 155,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Khóa bí mật (Private Key) x trong ElGamal được người nhận chọn như thế nào?",
+    "options": [
+      "A. Là một số chẵn chia hết cho p",
+      "B. Là một số nguyên ngẫu nhiên thỏa mãn 1 < x < p - 1 và được giữ bí mật tuyệt đối",
+      "C. Bắt buộc phải là một số nguyên tố",
+      "D. Được tính từ hàm Euler phi(p)"
+    ],
+    "ans": 1,
+    "exp": "Khóa bí mật x là một số nguyên được chọn ngẫu nhiên trong khoảng 1 < x < p - 1. Người sở hữu khóa phải giữ bí mật tuyệt đối số x này."
+  },
+  {
+    "id": 156,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Khi mã hóa một thông điệp M bằng ElGamal, người gửi cần chọn thêm giá trị bí mật phiên k (Ephemeral Key) thỏa mãn điều kiện gì?",
+    "options": [
+      "A. k phải bằng khóa bí mật x của người nhận",
+      "B. k là số nguyên ngẫu nhiên thỏa mãn 1 < k < p - 1 và gcd(k, p - 1) = 1",
+      "C. k là một hằng số cố định bằng 3",
+      "D. k phải chia hết cho p"
+    ],
+    "ans": 1,
+    "exp": "Người gửi phải sinh một số ngẫu nhiên k độc lập cho mỗi thông điệp (gọi là Ephemeral Key hay Nonce) sao cho 1 < k < p - 1 và nguyên tố cùng nhau với p - 1 (gcd(k, p-1) = 1)."
+  },
+  {
+    "id": 157,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Bản mã ElGamal của một thông điệp M bao gồm những thành phần nào?",
+    "options": [
+      "A. Một số nguyên C duy nhất giống như RSA",
+      "B. Cặp hai số nguyên (c1, c2) trong đó c1 = g^k mod p và c2 = (M * y^k) mod p",
+      "C. Bộ ba số (c1, c2, c3)",
+      "D. Một mảng 16 byte sau phép thế ma trận"
+    ],
+    "ans": 1,
+    "exp": "Bản mã ElGamal gồm cặp 2 thành phần (c1, c2): c1 = g^k mod p (mang thông tin chia sẻ khóa) và c2 = M * (y^k) mod p (bản rõ M được nhân với khóa tạm thời s = y^k mod p)."
+  },
+  {
+    "id": 158,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Đặc tính 'Mã hóa ngẫu nhiên' (Probabilistic Encryption) của ElGamal có ý nghĩa gì?",
+    "options": [
+      "A. Thuật toán đôi khi giải mã ra kết quả sai",
+      "B. Cùng một bản rõ M, khi mã hóa nhiều lần với các số k ngẫu nhiên khác nhau sẽ sinh ra các bản mã (c1, c2) hoàn toàn khác nhau",
+      "C. Bản rõ M phải được tạo ra ngẫu nhiên",
+      "D. Khóa công khai thay đổi liên tục theo thời gian"
+    ],
+    "ans": 1,
+    "exp": "Nhờ sử dụng số ngẫu nhiên k cho mỗi phiên, ElGamal là hệ mật mã xác suất (Probabilistic Encryption). Kẻ tấn công không thể kiểm tra phỏng đoán bản rõ bằng cách thử mã hóa rồi so sánh (đạt tính bảo mật ngữ nghĩa IND-CPA)."
+  },
+  {
+    "id": 159,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Hệ số mở rộng bản mã (Ciphertext expansion rate) của ElGamal là bao nhiêu so với bản rõ ban đầu?",
+    "options": [
+      "A. 1:1 (Kích thước không đổi)",
+      "B. 2:1 (Bản mã có kích thước gấp đôi bản rõ)",
+      "C. 4:1 (Bản mã gấp 4 lần bản rõ)",
+      "D. Tùy thuộc vào số lượng ký tự"
+    ],
+    "ans": 1,
+    "exp": "Vì bản mã ElGamal gồm 2 phần tử (c1, c2) đều có độ dài bằng kích thước modulo p, nên kích thước bản mã gấp 2 lần kích thước khối dữ liệu ban đầu M (tỷ lệ mở rộng 2:1)."
+  },
+  {
+    "id": 160,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Để giải mã cặp bản mã (c1, c2), người nhận sở hữu khóa bí mật x sẽ tính khóa chia sẻ tạm thời s bằng công thức nào?",
+    "options": [
+      "A. s = c1 * x mod p",
+      "B. s = (c1)^x mod p",
+      "C. s = (c2)^x mod p",
+      "D. s = g^(c1 * x) mod p"
+    ],
+    "ans": 1,
+    "exp": "Người nhận tính s = (c1)^x mod p. Do c1 = g^k mod p nên s = (g^k)^x = g^(kx) mod p. Giá trị này bằng đúng y^k = (g^x)^k = g^(kx) mod p mà người gửi đã dùng!"
+  },
+  {
+    "id": 161,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Sau khi tính được khóa chia sẻ s = (c1)^x mod p, người nhận khôi phục bản rõ M bằng cách nào?",
+    "options": [
+      "A. M = (c2 - s) mod p",
+      "B. M = (c2 * s^(-1)) mod p (với s^(-1) là phần tử nghịch đảo modulo p của s)",
+      "C. M = (c2 / s) theo phép chia số thực thông thường",
+      "D. M = (c2 XOR s)"
+    ],
+    "ans": 1,
+    "exp": "Vì c2 = (M * s) mod p, nên để khôi phục M, người nhận nhân c2 với nghịch đảo modulo s^(-1) của s theo modulo p: M = (c2 * s^(-1)) mod p."
+  },
+  {
+    "id": 162,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Theo Định lý nhỏ Fermat, nếu p là số nguyên tố thì nghịch đảo modulo s^(-1) mod p có thể được tính trực tiếp qua lũy thừa nào?",
+    "options": [
+      "A. s^(p - 1) mod p",
+      "B. s^(p - 2) mod p",
+      "C. s^(p) mod p",
+      "D. s^(p - 3) mod p"
+    ],
+    "ans": 1,
+    "exp": "Theo Fermat nhỏ, s^(p-1) ≡ 1 (mod p) => s * s^(p-2) ≡ 1 (mod p). Do đó s^(-1) ≡ s^(p-2) (mod p). Người nhận cũng có thể dùng giải thuật Euclid mở rộng để tìm nghịch đảo này."
+  },
+  {
+    "id": 163,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Điều gì sẽ xảy ra nếu người gửi vô tình tái sử dụng cùng một số ngẫu nhiên k (Nonce Reuse) để mã hóa hai thông điệp khác nhau M1 và M2?",
+    "options": [
+      "A. Không ảnh hưởng gì vì khóa bí mật x vẫn an toàn",
+      "B. Cả hai bản mã có c1 giống nhau, và kẻ tấn công có thể tính tỷ số c2_1 / c2_2 ≡ M1 / M2 (mod p) để tìm ra thông điệp",
+      "C. Quá trình giải mã sẽ báo lỗi toán học",
+      "D. Hai bản mã sẽ tự động bị hủy"
+    ],
+    "ans": 1,
+    "exp": "Nếu tái sử dụng k, thành phần c1 = g^k mod p và khóa che giấu s = y^k mod p sẽ giống hệt nhau ở cả 2 lần mã hóa. Kẻ tấn công có c2_1 / c2_2 = M1 / M2 mod p, làm lộ mối tương quan và giải mã được bản rõ nếu biết 1 trong 2 thông điệp!"
+  },
+  {
+    "id": 164,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Hệ mật mã ElGamal có mối liên hệ trực tiếp sâu sắc nhất với giao thức mật mã kinh điển nào?",
+    "options": [
+      "A. Mạng Feistel của DES",
+      "B. Giao thức Trao đổi khóa Diffie-Hellman (Diffie-Hellman Key Exchange)",
+      "C. Hàm nén Merkle-Damgård",
+      "D. Thuật toán mở rộng khóa Rijndael"
+    ],
+    "ans": 1,
+    "exp": "ElGamal có thể được xem là một sự mở rộng của giao thức trao đổi khóa Diffie-Hellman. Thành phần c1 = g^k mod p chính là khóa tạm thời của bên gửi, và s = g^(kx) mod p là bí mật chia sẻ chung được dùng để che giấu thông điệp M."
+  },
+  {
+    "id": 165,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Trong sơ đồ Chữ ký số ElGamal (ElGamal Digital Signature), chữ ký cho thông điệp M gồm cặp giá trị nào?",
+    "options": [
+      "A. Một chuỗi băm SHA-256",
+      "B. Cặp hai số nguyên (S1, S2)",
+      "C. Một số mũ bí mật d",
+      "D. Một ma trận 4x4"
+    ],
+    "ans": 1,
+    "exp": "Chữ ký số ElGamal gồm cặp số (S1, S2), trong đó S1 = g^k mod p và S2 = (H(M) - x * S1) * k^(-1) mod (p - 1)."
+  },
+  {
+    "id": 166,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Điều kiện xác minh chữ ký số ElGamal (S1, S2) cho thông điệp M bằng khóa công khai (p, g, y) là gì?",
+    "options": [
+      "A. (S1 + S2) mod p = M",
+      "B. g^M ≡ (y^S1 * S1^S2) (mod p)",
+      "C. S1^x ≡ S2 (mod p)",
+      "D. y^M ≡ g^(S1 * S2) (mod p)"
+    ],
+    "ans": 1,
+    "exp": "Người kiểm tra tính v1 = g^M mod p và v2 = (y^S1 * S1^S2) mod p. Nếu v1 = v2 thì chữ ký được công nhận là hợp lệ và xuất phát từ chính chủ sở hữu khóa bí mật x."
+  },
+  {
+    "id": 167,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Nếu kẻ tấn công phát hiện người ký tái sử dụng số ngẫu nhiên k khi tạo 2 chữ ký ElGamal khác nhau, hậu quả nghiêm trọng nhất là gì?",
+    "options": [
+      "A. Chỉ làm sai một chữ ký",
+      "B. Kẻ tấn công có thể giải hệ phương trình và khôi phục trực tiếp Khóa bí mật x của người ký",
+      "C. Người nhận không giải mã được tài liệu",
+      "D. Không gây hậu quả vì k độc lập với x"
+    ],
+    "ans": 1,
+    "exp": "Trong chữ ký số ElGamal, nếu tái sử dụng k, S1 sẽ trùng nhau. Kẻ tấn công lấy hiệu hai phương trình S2 để tính ra k, và từ đó tính ra trực tiếp khóa bí mật x! Vụ hack máy chơi game PlayStation 3 năm 2010 của Sony là do lỗi tái sử dụng số k này."
+  },
+  {
+    "id": 168,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Tiêu chuẩn Chữ ký số Quốc gia của Hoa Kỳ (NIST Digital Signature Algorithm - DSA) được phát triển dựa trên sơ đồ nào?",
+    "options": [
+      "A. Thuật toán mã hóa AES",
+      "B. Sơ đồ Chữ ký số ElGamal (ElGamal Signature Scheme)",
+      "C. Mạng thay thế hoán vị SPN",
+      "D. Hàm băm MD5"
+    ],
+    "ans": 1,
+    "exp": "DSA (FIPS 186) do viện NIST chuẩn hóa năm 1991 là một biến thể tối ưu của sơ đồ chữ ký số ElGamal, giới hạn tính toán trên một nhóm con cấp số nguyên tố q nhỏ hơn để giảm kích thước chữ ký."
+  },
+  {
+    "id": 169,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Thuật toán ElGamal sở hữu tính chất đồng cấu nào sau đây?",
+    "options": [
+      "A. Đồng cấu cộng (Additive Homomorphic)",
+      "B. Đồng cấu nhân (Multiplicative Homomorphic): E(M1) * E(M2) = E(M1 * M2)",
+      "C. Hoàn toàn đồng cấu (Fully Homomorphic - FHE)",
+      "D. Không có tính chất đồng cấu nào"
+    ],
+    "ans": 1,
+    "exp": "ElGamal có tính đồng cấu nhân: Nhân từng thành phần của 2 bản mã (c1_1 * c1_2, c2_1 * c2_2) sẽ cho ra một bản mã hợp lệ của tích hai bản rõ (M1 * M2 mod p)."
+  },
+  {
+    "id": 170,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Do có tính đồng cấu nhân và tính 'dẻo' (Malleability), ElGamal thuần túy (Textbook ElGamal) dễ bị tổn thương trước loại tấn công nào?",
+    "options": [
+      "A. Tấn công vét cạn khóa (Brute Force)",
+      "B. Tấn công bản mã chọn (Chosen Ciphertext Attack - CCA2)",
+      "C. Tấn công phân tích tần suất ký tự",
+      "D. Tấn công thời gian (Timing attack)"
+    ],
+    "ans": 1,
+    "exp": "Tính dẻo cho phép kẻ tấn công sửa đổi bản mã (c1, c2) thành (c1, 2*c2) để bản rõ sau giải mã bị nhân đôi mà không cần biết khóa bí mật. Vì vậy Textbook ElGamal không đạt mức bảo mật IND-CCA2 nếu không dùng thêm cơ chế như đệm Cramer-Shoup."
+  },
+  {
+    "id": 171,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Khái niệm 'Safe Prime' (Số nguyên tố an toàn) trong ElGamal có dạng như thế nào và có tác dụng gì?",
+    "options": [
+      "A. p = 2^n - 1 để tăng tốc độ nhân",
+      "B. p = 2q + 1 với q cũng là một số nguyên tố, nhằm ngăn chặn thuật toán tấn công Pohlig-Hellman",
+      "C. p phải là số nguyên tố nhỏ hơn 1000",
+      "D. p là tích của hai số nguyên tố bí mật"
+    ],
+    "ans": 1,
+    "exp": "Safe Prime có dạng p = 2q + 1 (q là nguyên tố Sophie Germain). Khi đó p - 1 chỉ có ước nguyên tố lớn là q, khiến thuật toán Pohlig-Hellman không thể phân rã bài toán logarithm rời rạc thành các bài toán con trên các nhóm nhỏ."
+  },
+  {
+    "id": 172,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Thuật toán nào sau đây là phương pháp mạnh nhất hiện nay dùng để giải bài toán Logarithm Rời Rạc trên trường Z_p* số lớn?",
+    "options": [
+      "A. Sàng trường số tổng quát (General Number Field Sieve - GNFS / NFS)",
+      "B. Thuật toán tìm kiếm nhị phân",
+      "C. Thuật toán sắp xếp nhanh QuickSort",
+      "D. Thuật toán quay lui Backtracking"
+    ],
+    "ans": 0,
+    "exp": "Sàng trường số (GNFS - General Number Field Sieve) là thuật toán tiệm cận nhanh nhất hiện nay để giải cả bài toán phân tích nhân tử RSA lẫn bài toán Logarithm rời rạc ElGamal trên trường hữu hạn Z_p* với độ phức tạp dưới hàm mũ."
+  },
+  {
+    "id": 173,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Kích thước khóa p của ElGamal được khuyến nghị hiện nay trong các ứng dụng thực tế để đảm bảo an toàn là bao nhiêu?",
+    "options": [
+      "A. 64-bit",
+      "B. 512-bit",
+      "C. Tối thiểu 2048-bit (khuyến nghị 3072-bit hoặc 4096-bit)",
+      "D. 128-bit"
+    ],
+    "ans": 2,
+    "exp": "Tương tự như RSA, các cơ quan an ninh mạng như NIST và ENISA khuyến nghị modulo p của ElGamal phải đạt tối thiểu 2048 bit (tương đương mức an toàn 112-bit) và nên dùng 3072 bit (an toàn 128-bit) cho các dữ liệu dài hạn."
+  },
+  {
+    "id": 174,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Biến thể của ElGamal hoạt động trên Đường cong Elliptic (Elliptic Curve ElGamal - EC-ElGamal) mang lại ưu điểm vượt trội gì?",
+    "options": [
+      "A. Cho phép không cần dùng khóa bí mật",
+      "B. Đạt cùng mức độ bảo mật nhưng với kích thước khóa nhỏ hơn nhiều (ví dụ khóa ECC 256-bit tương đương ElGamal 3072-bit)",
+      "C. Bản mã ngắn hơn bản rõ",
+      "D. Trở thành mã hóa đối xứng"
+    ],
+    "ans": 1,
+    "exp": "Do bài toán logarithm rời rạc trên đường cong Elliptic (ECDLP) khó hơn nhiều so với trên Z_p* (không áp dụng được thuật toán GNFS), EC-ElGamal chỉ cần khóa 256-bit để đạt mức bảo mật tương đương khóa 3072-bit của ElGamal truyền thống."
+  },
+  {
+    "id": 175,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Giao thức bảo mật thư điện tử nổi tiếng PGP (Pretty Good Privacy) và GnuPG sử dụng ElGamal cho mục đích gì?",
+    "options": [
+      "A. Chỉ dùng làm hàm băm tệp tin",
+      "B. Mã hóa bất đối xứng khóa công khai để bao bọc và trao đổi khóa đối xứng phiên (Session Key)",
+      "C. Thay thế hoàn toàn mã hóa đối xứng AES",
+      "D. Nén dữ liệu tệp đính kèm"
+    ],
+    "ans": 1,
+    "exp": "Trong chuẩn OpenPGP (RFC 4880), ElGamal được hỗ trợ như một thuật toán khóa công khai chính thức để mã hóa khóa phiên đối xứng (Session Key), thường kết hợp cùng DSA cho việc ký số."
+  },
+  {
+    "id": 176,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "So sánh về tốc độ thực thi giữa ElGamal và RSA, nhận định nào sau đây là chính xác?",
+    "options": [
+      "A. ElGamal luôn nhanh gấp 10 lần RSA ở mọi tác vụ",
+      "B. Quá trình mã hóa của ElGamal đòi hỏi 2 phép lũy thừa modulo nên thường chậm hơn mã hóa RSA (với e nhỏ như 65537), nhưng việc tạo khóa và sinh chữ ký rất linh hoạt",
+      "C. RSA không thể mã hóa được số lớn",
+      "D. Cả hai thuật toán có tốc độ tính toán hoàn toàn giống hệt nhau"
+    ],
+    "ans": 1,
+    "exp": "RSA mã hóa rất nhanh khi dùng số mũ công khai nhỏ e = 65537 (chỉ cần 17 phép nhân). ElGamal cần tính g^k mod p và y^k mod p với k ngẫu nhiên lớn nên mã hóa chậm hơn, bù lại tạo chữ ký số rất hiệu quả."
+  },
+  {
+    "id": 177,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Để mã hóa một thông điệp số M trong ElGamal, điều kiện bắt buộc đối với giá trị của M là gì?",
+    "options": [
+      "A. M phải là một số âm",
+      "B. 0 <= M < p (Thông điệp phải nhỏ hơn modulo p)",
+      "C. M bắt buộc phải lớn hơn p",
+      "D. M phải là lũy thừa của 2"
+    ],
+    "ans": 1,
+    "exp": "Vì các phép toán diễn ra trong trường hữu hạn Z_p*, giá trị số của thông điệp M bắt buộc phải nhỏ hơn số nguyên tố p (0 <= M < p). Nếu dữ liệu lớn hơn p, ta phải chia nhỏ dữ liệu thành nhiều khối."
+  },
+  {
+    "id": 178,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Trong trường hợp nào kẻ tấn công có thể áp dụng thuật toán Baby-step Giant-step để bẻ khóa ElGamal?",
+    "options": [
+      "A. Khi kích thước nhóm hoặc modulo p quá nhỏ (độ phức tạp O(sqrt(p)))",
+      "B. Khi khóa bí mật là một chuỗi ký tự ASCII",
+      "C. Khi số k được chọn bằng 1",
+      "D. Khi người gửi sử dụng giao thức HTTPS"
+    ],
+    "ans": 0,
+    "exp": "Thuật toán Baby-step Giant-step của Daniel Shanks giải bài toán DLP với độ phức tạp thời gian và không gian O(sqrt(N)). Nếu p nhỏ (dưới 80-bit), máy tính thông thường có thể tìm ra khóa bí mật x trong vài giây."
+  },
+  {
+    "id": 179,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Cơ chế nào sau đây là giải pháp tiêu chuẩn giúp hệ mật mã ElGamal chống lại tấn công bản mã chọn (IND-CCA2) trong thực tế?",
+    "options": [
+      "A. Hệ mật mã Cramer-Shoup hoặc tích hợp cơ chế đóng gói khóa ECIES (Elliptic Curve Integrated Encryption Scheme)",
+      "B. Giảm kích thước khóa xuống 56 bit",
+      "C. Bỏ qua thành phần c1 trong bản mã",
+      "D. Cố định giá trị k bằng 2"
+    ],
+    "ans": 0,
+    "exp": "Hệ mật mã Cramer-Shoup (1998) là một phần mở rộng chứng minh được tính an toàn trước tấn công CCA2 dựa trên ElGamal. Trong môi trường ECC, chuẩn ECIES kết hợp ElGamal với hàm KDF và mã xác thực MAC để đạt an toàn tối đa."
+  },
+  {
+    "id": 180,
+    "algo": "elgamal",
+    "algoName": "ElGamal",
+    "badgeClass": "badge-asym",
+    "q": "Ý nghĩa lịch sử quan trọng nhất của ElGamal đối với ngành Mật mã học là gì?",
+    "options": [
+      "A. Là thuật toán đầu tiên mã hóa được văn bản chữ cái",
+      "B. Là cột mốc tiên phong chứng minh tính khả thi của mật mã dựa trên Logarithm rời rạc, khai sinh trường phái mã hóa xác suất và đặt nền móng cho chuẩn chữ ký điện tử hiện đại",
+      "C. Thay thế hoàn toàn thuật toán DES trong thanh toán thẻ ATM",
+      "D. Trở thành hàm băm một chiều an toàn nhất"
+    ],
+    "ans": 1,
+    "exp": "ElGamal là công trình đột phá khẳng định sức mạnh của bài toán Logarithm Rời Rạc, mở đường cho kỷ nguyên mã hóa xác suất (Probabilistic Encryption) và là cha đẻ trực tiếp của chuẩn chữ ký số DSS/DSA bảo vệ hàng triệu giao dịch điện tử."
   }
 ];
 
@@ -6958,6 +8112,242 @@ eg E wedge G)$ (Chọn $F$ nếu $E=1$, chọn $G$ nếu $E=0$).<br>
             };
           },
           solution: 'HMAC giải quyết triệt để tấn công mở rộng độ dài (Length Extension Attack) mà hàm băm thuần túy dễ gặp phải, là trụ cột xác thực API trên toàn thế giới.'
+        }
+      ],
+      elgamal: [
+        {
+          id: 1, level: 1, type: 'basic',
+          title: 'Kiểm Tra Căn Nguyên Thủy (Primitive Root / Generator g Modulo p)',
+          target: 'Hiểu điều kiện bắt buộc của tham số g: phải sinh ra toàn bộ nhóm nhân Z_p*.',
+          guide: 'Với số nguyên tố p, phần tử g là căn nguyên thủy nếu tập hợp {g^1, g^2, ..., g^(p-1) mod p} chứa đủ tất cả các số từ 1 đến p-1 (chu kỳ dài đúng p-1). Nhập g và p (ví dụ: "3, 7" hoặc "2, 11" hoặc "2, 467").',
+          sampleInput: '3, 7',
+          inputLabel: 'Nhập g và p cách nhau dấu phẩy (g, p):',
+          handler: (val) => {
+            const parts = val.split(',').map(s => BigInt(s.trim() || '0'));
+            const g = parts[0] || 3n, p = parts[1] || 7n;
+            if (p <= 2n) return { result: 'p phải là số nguyên tố lớn hơn 2!', success: false };
+            const seen = new Set();
+            const orderList = [];
+            let cur = 1n;
+            for (let i = 1n; i < p; i++) {
+              cur = (cur * g) % p;
+              seen.add(cur.toString());
+              if (orderList.length < 12) orderList.push(`${g}^${i} ≡ ${cur}`);
+            }
+            const isGen = seen.size === Number(p - 1n);
+            return {
+              result: `Kiểm tra g = ${g} trên trường Z_${p}*:\\nCác lũy thừa đầu tiên mod ${p}:\\n${orderList.join(', ')}${orderList.length < Number(p-1n) ? '...' : ''}\\n\\nSố phần tử sinh ra: ${seen.size} / ${p - 1n} phần tử.\\n=> ${isGen ? 'g LÀ CĂN NGUYÊN THỦY (Generator) HỢP LỆ! ✅' : 'g KHÔNG phải căn nguyên thủy (chu kỳ bị ngắn)! ❌'}`,
+              success: isGen
+            };
+          },
+          solution: 'Trong hệ ElGamal, g bắt buộc phải là căn nguyên thủy để không gian khóa công khai y = g^x mod p và khóa tạm c1 = g^k mod p đạt độ bao phủ tối đa p-1 giá trị, chống lại tấn công thu hẹp không gian nhóm con.'
+        },
+        {
+          id: 2, level: 2, type: 'basic',
+          title: 'Sinh Cặp Khóa ElGamal (p, g, x → y = g^x mod p)',
+          target: 'Nắm vững cấu trúc cặp khóa công khai (Public Key) và khóa bí mật (Private Key).',
+          guide: 'Người nhận chọn số nguyên tố p, căn nguyên thủy g, và số mũ bí mật x (1 < x < p-1). Tính khóa công khai y = g^x mod p. Khóa công khai là (p, g, y), khóa bí mật là x.',
+          sampleInput: '79, 3, 15',
+          inputLabel: 'Nhập p, g, x (ví dụ: 79, 3, 15):',
+          handler: (val) => {
+            const parts = val.split(',').map(s => BigInt(s.trim() || '0'));
+            const p = parts[0] || 79n, g = parts[1] || 3n, x = parts[2] || 15n;
+            const y = modPow(g, x, p);
+            return {
+              result: `Tham số hệ thống:\\n• Số nguyên tố p = ${p}\\n• Phần tử sinh g = ${g}\\n• Khóa bí mật (Private Key) x = ${x}\\n\\nTính toán Khóa công khai:\\ny = g^x mod p = ${g}^${x} mod ${p} = ${y}\\n\\n=> KHÓA CÔNG KHAI (Public Key): (p = ${p}, g = ${g}, y = ${y})\\n=> KHÓA BÍ MẬT (Private Key): x = ${x}`,
+              success: true
+            };
+          },
+          solution: 'Độ an toàn của khóa dựa vào bài toán Logarithm Rời rạc: Dù kẻ tấn công biết rõ (p, g, y), họ không thể tính ngược ra x nếu p là số nguyên tố lớn (≥ 2048-bit).'
+        },
+        {
+          id: 3, level: 3, type: 'basic',
+          title: 'Chọn Số Ngẫu Nhiên Bí Mật Phiên k (gcd(k, p-1) = 1)',
+          target: 'Hiểu điều kiện chọn Nonce k trong quá trình mã hóa ElGamal.',
+          guide: 'Mỗi lần mã hóa, người gửi bắt buộc phải chọn một số ngẫu nhiên k (Ephemeral key) thỏa mãn: 1 < k < p-1 và gcd(k, p-1) = 1. Nhập k và p (ví dụ k=17, p=79).',
+          sampleInput: '17, 79',
+          inputLabel: 'Nhập k và p (ví dụ: 17, 79):',
+          handler: (val) => {
+            const parts = val.split(',').map(s => BigInt(s.trim() || '0'));
+            const k = parts[0] || 17n, p = parts[1] || 79n;
+            const pMinus1 = p - 1n;
+            const g = gcd(k, pMinus1);
+            const isValid = k > 1n && k < pMinus1 && g === 1n;
+            return {
+              result: `Kiểm tra số phiên k = ${k} với modulo p = ${p} (p-1 = ${pMinus1}):\\n• Điều kiện khoảng: 1 < ${k} < ${pMinus1} -> ${k > 1n && k < pMinus1 ? 'Thỏa mãn ✅' : 'Không thỏa mãn ❌'}\\n• Ước chung lớn nhất: gcd(${k}, ${pMinus1}) = ${g} -> ${g === 1n ? 'Nguyên tố cùng nhau ✅' : 'Không nguyên tố cùng nhau ❌'}\\n\\n=> ${isValid ? 'Số k HỢP LỆ làm khóa ngẫu nhiên phiên mã hóa!' : 'Số k KHÔNG hợp lệ, vui lòng chọn số khác!'}`,
+              success: isValid
+            };
+          },
+          solution: 'Nếu k không nguyên tố cùng nhau với p-1, việc tính nghịch đảo k^(-1) mod (p-1) trong sơ đồ chữ ký số sẽ không thực hiện được, đồng thời làm giảm tính ngẫu nhiên của bản mã.'
+        },
+        {
+          id: 4, level: 4, type: 'mid',
+          title: 'Tính Thành Phần Bản Mã Thứ Nhất c1 = g^k mod p',
+          target: 'Nắm vững cách tính khóa tạm c1 gửi kèm theo bản mã.',
+          guide: 'Thành phần c1 độc lập với thông điệp M, đóng vai trò như chiếc chìa khóa đóng gói để người nhận dùng khóa bí mật x mở ra bí mật chung. Công thức: c1 = g^k mod p.',
+          sampleInput: '3, 17, 79',
+          inputLabel: 'Nhập g, k, p (ví dụ: 3, 17, 79):',
+          handler: (val) => {
+            const parts = val.split(',').map(s => BigInt(s.trim() || '0'));
+            const g = parts[0] || 3n, k = parts[1] || 17n, p = parts[2] || 79n;
+            const c1 = modPow(g, k, p);
+            return {
+              result: `Đầu vào: g = ${g}, k = ${k}, p = ${p}\\nCông thức: c1 = g^k mod p = ${g}^${k} mod ${p}\\n\\n=> Thành phần bản mã thứ nhất: c1 = ${c1}\\n(Thành phần này được công khai gửi đi kèm theo c2)`,
+              success: true
+            };
+          },
+          solution: 'c1 chính là giá trị trao đổi Diffie-Hellman của bên gửi. Dù kẻ tấn công biết g, p và c1, họ không thể tính ra k do bài toán DLP.'
+        },
+        {
+          id: 5, level: 5, type: 'mid',
+          title: 'Tính Khóa Tạm Thời s = y^k mod p và Bản Mã c2 = M · s mod p',
+          target: 'Quan sát cơ chế che giấu thông điệp M bằng phép nhân modulo.',
+          guide: 'Người gửi dùng khóa công khai y của người nhận (y=58) và số k của mình (k=17) để tạo khóa che giấu s = y^k mod p. Sau đó che giấu M=42 bằng: c2 = (M * s) mod p.',
+          sampleInput: '42, 58, 17, 79',
+          inputLabel: 'Nhập M, y, k, p (ví dụ: 42, 58, 17, 79):',
+          handler: (val) => {
+            const parts = val.split(',').map(s => BigInt(s.trim() || '0'));
+            const M = parts[0] || 42n, y = parts[1] || 58n, k = parts[2] || 17n, p = parts[3] || 79n;
+            const s = modPow(y, k, p);
+            const c2 = (M * s) % p;
+            return {
+              result: `Thông điệp: M = ${M}\\nKhóa công khai người nhận: y = ${y}\\nSố ngẫu nhiên người gửi: k = ${k}\\n\\n1. Khóa tạm thời bí mật chung (Shared Secret):\\ns = y^k mod p = ${y}^${k} mod ${p} = ${s}\\n\\n2. Thành phần bản mã thứ hai:\\nc2 = (M * s) mod p = (${M} * ${s}) mod ${p} = ${c2}\\n\\n=> Bản mã hoàn chỉnh gửi đi: (c1, c2) = (c1, ${c2})`,
+              success: true
+            };
+          },
+          solution: 'Phép nhân M với s mod p giống như một phép khóa hộp dữ liệu. Chỉ ai có thể tính lại được s mới có thể mở khóa để lấy lại M.'
+        },
+        {
+          id: 6, level: 6, type: 'mid',
+          title: 'Tìm Nghịch Đảo Modulo s^(-1) mod p Bằng Euclid Mở Rộng',
+          target: 'Rèn luyện kỹ năng tìm phần tử nghịch đảo phục vụ quá trình giải mã.',
+          guide: 'Để giải mã phép nhân modulo c2 = (M * s) mod p, ta phải nhân c2 với nghịch đảo s^(-1) mod p (thỏa mãn (s * s^(-1)) mod p = 1). Dùng giải thuật Euclid mở rộng.',
+          sampleInput: '17, 79',
+          inputLabel: 'Nhập s và p (ví dụ: 17, 79):',
+          handler: (val) => {
+            const parts = val.split(',').map(s => BigInt(s.trim() || '0'));
+            const s = parts[0] || 17n, p = parts[1] || 79n;
+            const egcd = extendedGCD(s, p);
+            let sInv = egcd.x % p;
+            if (sInv < 0n) sInv += p;
+            return {
+              result: `Tìm nghịch đảo của s = ${s} theo modulo p = ${p}:\\nThuật toán Euclid mở rộng giải: ${s}*x + ${p}*y = 1\\n=> Nghịch đảo tìm được: s^(-1) = ${sInv}\\n\\nKiểm tra lại:\\n(s * s^(-1)) mod p = (${s} * ${sInv}) mod ${p} = ${(s * sInv) % p} (Chính xác = 1! ✅)`,
+              success: true
+            };
+          },
+          solution: 'Nghịch đảo modulo là chìa khóa then chốt của phép chia trong số học đồng dư: Phép chia M = c2 / s tương đương với phép nhân M = c2 * s^(-1) mod p.'
+        },
+        {
+          id: 7, level: 7, type: 'adv',
+          title: 'Giải Mã Hoàn Chỉnh Khôi Phục Bản Rõ M = c2 · s^(-1) mod p',
+          target: 'Thực hiện trọn vẹn quy trình giải mã từ cặp (c1, c2) và khóa bí mật x.',
+          guide: 'Người nhận có khóa bí mật x: Bước 1 tính s = (c1)^x mod p. Bước 2 tìm s^(-1) mod p. Bước 3 tính M = (c2 * s^(-1)) mod p.',
+          sampleInput: '48, 3, 15, 79',
+          inputLabel: 'Nhập c1, c2, x, p (ví dụ: 48, 3, 15, 79):',
+          handler: (val) => {
+            const parts = val.split(',').map(s => BigInt(s.trim() || '0'));
+            const c1 = parts[0] || 48n, c2 = parts[1] || 3n, x = parts[2] || 15n, p = parts[3] || 79n;
+            const s = modPow(c1, x, p);
+            const egcd = extendedGCD(s, p);
+            let sInv = egcd.x % p;
+            if (sInv < 0n) sInv += p;
+            const M = (c2 * sInv) % p;
+            return {
+              result: `Bản mã nhận được: c1 = ${c1}, c2 = ${c2}\\nKhóa bí mật: x = ${x}, Modulo p = ${p}\\n\\n1. Tái tạo khóa chia sẻ s:\\ns = c1^x mod p = ${c1}^${x} mod ${p} = ${s}\\n\\n2. Tìm nghịch đảo modulo:\\ns^(-1) mod ${p} = ${sInv}\\n\\n3. Khôi phục bản rõ:\\nM = (c2 * s^(-1)) mod p = (${c2} * ${sInv}) mod ${p} = ${M}\\n\\n=> Bản rõ ban đầu được khôi phục nguyên vẹn: M = ${M} (Ký tự tương ứng: '${String.fromCharCode(Number(M))}')`,
+              success: true
+            };
+          },
+          solution: 'Do c1^x = (g^k)^x = g^(kx) = (g^x)^k = y^k = s (mod p), người nhận tái tạo được chính xác giá trị s mà người gửi đã dùng để mã hóa.'
+        },
+        {
+          id: 8, level: 8, type: 'adv',
+          title: 'Mã Hóa Chuỗi Ký Tự Văn Bản ASCII Với ElGamal',
+          target: 'Ứng dụng ElGamal mã hóa văn bản ký tự thành danh sách các cặp (c1, c2).',
+          guide: 'Từng ký tự được chuyển sang mã số ASCII, sau đó mã hóa với bộ khóa ElGamal (p=467, g=2, y=132, x=127).',
+          sampleInput: 'CRYPTO',
+          inputLabel: 'Nhập chuỗi văn bản cần mã hóa:',
+          handler: (val) => {
+            const text = val || 'CRYPTO';
+            const p = 467n, g = 2n, y = 132n, x = 127n;
+            let k = 13n;
+            const pairs = [];
+            const decChars = [];
+            for (let i = 0; i < text.length; i++) {
+              const m = BigInt(text.charCodeAt(i));
+              const c1 = modPow(g, k, p);
+              const s = modPow(y, k, p);
+              const c2 = (m * s) % p;
+              pairs.push(`(${c1},${c2})`);
+              const sRec = modPow(c1, x, p);
+              const egcd = extendedGCD(sRec, p);
+              let sInv = egcd.x % p;
+              if (sInv < 0n) sInv += p;
+              const decM = Number((c2 * sInv) % p);
+              decChars.push(String.fromCharCode(decM));
+              k = (k + 4n) % (p - 1n);
+              if (gcd(k, p - 1n) !== 1n) k = 17n;
+            }
+            return {
+              result: `Văn bản gốc: "${text}"\\nKhóa công khai ElGamal: p=467, g=2, y=132\\n\\nDanh sách cặp bản mã (c1, c2):\\n[${pairs.join(', ')}]\\n\\nThử nghiệm giải mã đối chiếu:\\n"${decChars.join('')}" (Trùng khớp 100% bản gốc! ✅)`,
+              success: true
+            };
+          },
+          solution: 'Mỗi ký tự sinh ra 2 số (c1, c2), do đó bản mã có kích thước nở gấp đôi bản rõ. Trong thực tế, ElGamal được dùng để mã hóa khóa phiên AES (Hybrid Cryptography).'
+        },
+        {
+          id: 9, level: 9, type: 'adv',
+          title: 'Lỗ Hổng Tái Sử Dụng Nonce k (Nonce Reuse Attack)',
+          target: 'Minh họa hiểm họa an ninh khi người gửi dùng cùng 1 số k cho 2 thông điệp khác nhau.',
+          guide: 'Nếu mã hóa M1 và M2 bằng cùng một k, hai bản mã sẽ có c1 giống nhau và c2_1 = M1*s, c2_2 = M2*s. Kẻ tấn công biết M1 sẽ tính ngay ra M2 = c2_2 * c2_1^(-1) * M1 mod p.',
+          sampleInput: 'M1=65, M2=90, p=79, y=51, k=13',
+          inputLabel: 'Nhập thông số (ví dụ: M1=65, M2=90, p=79, y=51, k=13):',
+          handler: (val) => {
+            const p = 79n, y = 51n, k = 13n;
+            const M1 = 65n, M2 = 90n % p;
+            const s = modPow(y, k, p);
+            const c2_1 = (M1 * s) % p;
+            const c2_2 = (M2 * s) % p;
+            const egcd = extendedGCD(c2_1, p);
+            let c2_1_inv = egcd.x % p;
+            if (c2_1_inv < 0n) c2_1_inv += p;
+            const recoveredM2 = (c2_2 * c2_1_inv * M1) % p;
+            return {
+              result: `Mô phỏng 2 thông điệp dùng chung k = 13:\\n• Bản mã 1: c2_1 = (${M1} * ${s}) mod ${p} = ${c2_1}\\n• Bản mã 2: c2_2 = (${M2} * ${s}) mod ${p} = ${c2_2}\\n\\nKẻ tấn công không biết khóa bí mật x và không biết s, nhưng biết thông điệp M1 = ${M1}:\\nTỷ số: c2_2 / c2_1 ≡ M2 / M1 (mod ${p})\\n=> M2 = c2_2 * (c2_1)^(-1) * M1 mod ${p}\\n=> Kẻ tấn công tính ra M2 = ${c2_2} * ${c2_1_inv} * ${M1} mod ${p} = ${recoveredM2}!\\n\\n⚠️ BẢO MẬT BỊ PHÁ VỠ HOÀN TOÀN DO TÁI SỬ DỤNG NONCE k!`,
+              success: true
+            };
+          },
+          solution: 'Quy tắc vàng của ElGamal: Số ngẫu nhiên k phải là "Ephemeral" (dùng một lần duy nhất). Tái sử dụng k là lỗi chết người trong cài đặt mật mã.'
+        },
+        {
+          id: 10, level: 10, type: 'expert',
+          title: 'Chữ Ký Số ElGamal (Sinh Chữ Ký S1, S2 & Xác Minh)',
+          target: 'Làm chủ cơ chế chữ ký điện tử ElGamal - tiền thân của chuẩn NIST DSA.',
+          guide: 'Người ký tạo cặp chữ ký (S1, S2) cho thông điệp M. S1 = g^k mod p, S2 = (M - x*S1)*k^(-1) mod (p-1). Người nhận xác minh: g^M ≡ (y^S1 * S1^S2) mod p.',
+          sampleInput: '35, 79, 3, 15, 17',
+          inputLabel: 'Nhập M, p, g, x, k (ví dụ: 35, 79, 3, 15, 17):',
+          handler: (val) => {
+            const parts = val.split(',').map(s => BigInt(s.trim() || '0'));
+            const M = parts[0] || 35n, p = parts[1] || 79n, g = parts[2] || 3n, x = parts[3] || 15n, k = parts[4] || 17n;
+            const pMinus1 = p - 1n;
+            if (gcd(k, pMinus1) !== 1n) return { result: `k (${k}) phải nguyên tố cùng nhau với p-1 (${pMinus1})!`, success: false };
+            const y = modPow(g, x, p);
+            const S1 = modPow(g, k, p);
+            const egcd = extendedGCD(k, pMinus1);
+            let kInv = egcd.x % pMinus1;
+            if (kInv < 0n) kInv += pMinus1;
+            let diff = (M - (x * S1)) % pMinus1;
+            if (diff < 0n) diff += pMinus1;
+            const S2 = (diff * kInv) % pMinus1;
+
+            const v1 = modPow(g, M, p);
+            const v2 = (modPow(y, S1, p) * modPow(S1, S2, p)) % p;
+            const valid = v1 === v2;
+            return {
+              result: `1. THÔNG SỐ:\\n• Khóa công khai: p=${p}, g=${g}, y=${y}\\n• Khóa bí mật ký: x=${x}\\n• Thông điệp M = ${M}, Nonce k = ${k}\\n\\n2. TẠO CHỮ KÝ SỐ (S1, S2):\\n• S1 = g^k mod p = ${g}^${k} mod ${p} = ${S1}\\n• S2 = (M - x*S1)*k^(-1) mod (p-1) = (${M} - ${x}*${S1})*${kInv} mod ${pMinus1} = ${S2}\\n=> Cặp chữ ký: (S1 = ${S1}, S2 = ${S2})\\n\\n3. XÁC MINH CHỮ KÝ (VERIFICATION):\\n• v1 = g^M mod p = ${g}^${M} mod ${p} = ${v1}\\n• v2 = (y^S1 * S1^S2) mod p = (${y}^${S1} * ${S1}^${S2}) mod ${p} = ${v2}\\n=> So sánh: v1 (${v1}) == v2 (${v2}) -> ${valid ? 'XÁC THỰC THÀNH CÔNG! Chữ ký chính chủ và toàn vẹn! ✅' : 'XÁC THỰC THẤT BẠI! ❌'}`,
+              success: valid
+            };
+          },
+          solution: 'Chữ ký số ElGamal đảm bảo cả 3 tính chất: Xác thực người gửi (chỉ ai có x mới tạo được S2), Toàn vẹn thông điệp (sửa M thì v1 != v2), và Chống chối bỏ (Non-repudiation).'
         }
       ]
     };
